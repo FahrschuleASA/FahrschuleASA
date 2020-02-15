@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:lang="${#locale.language}">
+    <head>
+        <title th:text="#{email.cancelTeacherTeacher.title}">A driving lesson had been canceled</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+       <!-- <link rel="shortcut icon" th:href="@{|${baseUrl}/favicon.ico|}" /> -->
+    </head>
+    <body>
+        <p th:text="#{email.greeting(${user.firstName})}">
+            Dear
+        </p>
+        <p th:text="#{email.cancelTeacherTeacher.text2(${date},${beginTime},${endTime})}">
+        </p>
+    </body>
+</html>

@@ -1,0 +1,89 @@
+<div>
+    <h2>
+        <span id="student-management-page-heading" jhiTranslate="studentManagement.home.title">Students</span>
+        <button class="btn btn-primary float-right jh-create-entity" [routerLink]="['./new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span jhiTranslate="studentManagement.home.createLabel">Create a new Student</span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div *jhiHasAnyAuthority="['ROLE_TEACHER']" class="row mb">
+        <div class="col-md-2">
+            <select class="form-control" (change)="toggleAllStudents()">
+                <option value="0">Alle Fahrschüler</option>
+                <option value="1" selected>Meine Fahrschüler</option>
+            </select>
+        </div>
+        <div class="col-md-2">
+            <select class="form-control" (change)="toggleActiveStudents()">
+                <option value="0">Alle Fahrschüler</option>
+                <option value="1" selected>Aktive Fahrschüler</option>
+            </select>
+        </div>
+    </div>
+    <div class="table-responsive" *ngIf="students">
+        <table class="table table-striped" aria-describedby="student-management-page-heading">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+                <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span>
+                    <fa-icon [icon]="'sort'"></fa-icon>
+                </th>
+                <th scope="col" jhiSortBy="login"><span jhiTranslate="studentManagement.login">Login</span>
+                    <fa-icon [icon]="'sort'"></fa-icon>
+                </th>
+                <th scope="col" jhiSortBy="firstName"><span jhiTranslate="personalData.form.firstname">Firstname</span>
+                    <fa-icon [icon]="'sort'"></fa-icon>
+                </th>
+                <th scope="col" jhiSortBy="lastName"><span jhiTranslate="personalData.form.lastname">Lastname</span>
+                    <fa-icon [icon]="'sort'"></fa-icon>
+                </th>
+                <th scope="col" jhiSortBy="category"><span jhiTranslate="studentManagement.category">Driving Category</span>
+                    <fa-icon [icon]="'sort'"></fa-icon>
+                </th>
+                <th scope="col"></th>
+            </tr>
+            </thead>
+
+            <tbody *ngIf="students">
+            <tr *ngFor="let student of students; trackBy: trackIdentity">
+                <td>{{student.id}}</td>
+                <td>{{student.user.login}}</td>
+                <td>{{student.user.firstName}}</td>
+                <td>{{student.user.lastName}}</td>
+                <td>{{student.category}}</td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['./', student.id, 'view']"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['./', student.id, 'edit']"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="button" (click)="deleteStudent(student)"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="students">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5"
+                            [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

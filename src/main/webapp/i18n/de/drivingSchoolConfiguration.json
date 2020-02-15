@@ -1,0 +1,26 @@
+{
+    "drivingSchoolConfiguration": {
+        "title": "Fahrschule Konfiguration",
+        "messages": {
+            "success": "Die Konfiguration wurde erfolgreich angepasst!"
+        },
+        "form":{
+            "initialLessons": "Initiales wöchentliches Stundenlimit",
+            "planningWeekday": "Wochentag",
+            "planningHour": "Stunde",
+            "planningMinute": "Minute",
+            "maxInactive": "Maximale Inaktivität",
+            "days": "Tage",
+            "deadlineMissedLesson": "Deadline um Fahrstunden abzusagen",
+            "availableCategories": "Angebotene Führerschein-Klassen",
+            "emailSignature": "E-Mail Signatur",
+            "button": "Änderungen speichern"
+        },
+        "initialLessonsDescription": "Wie viele Stunden sollte ein Fahrschüler standardmäßig maximal machen dürfen?<br>Dies kann bei jedem Fahrschüler individuell angepasst werden.",
+        "planningDescription": "Wann soll der Planungsalgorithmus wöchentlich ausgeführt werden?",
+        "maxInactiveDescription": "Wie viele Tage dürfen Schüler maximal inaktiv sein?<br>0 bedeutet, dass Fahrschüler/Fahrlehrer beliebig lange inaktiv sein dürfen.",
+        "deadlineMissedLessonDescription": "Wieviele Stunden vorher muss eine Fahrstunde spätestens abgesagt werden?",
+        "availableCategoriesDescription": "Welche Führerschein-Klassen werden angeboten?",
+        "emailSignatureDescription": "Wie soll die Signatur der E-Mails aussehen?"
+    }
+}

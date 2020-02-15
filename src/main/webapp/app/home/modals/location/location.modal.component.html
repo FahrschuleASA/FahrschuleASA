@@ -1,0 +1,93 @@
+<div class="modal-header">
+    <h4 class="modal-title">Ort definieren</h4>
+    <button aria-label="Close" data-dismiss="modal" class="close" type="button" (click)="cancel()">
+        <span aria-hidden="true">x</span>
+    </button>
+</div>
+
+<div class="modal-body" *ngIf="student">
+    <div class="col-md-8">
+        <form class="form" role="form" [formGroup]="eventForm">
+            <div class="form-group">
+                <label class="title-label" for="street">Straße</label>
+                <input type="text" class="form-control" name="street" id="street" formControlName="street">
+                <div
+                    *ngIf="eventForm.get('street').invalid && (eventForm.get('street').dirty || eventForm.get('street').touched)">
+                    <small class="form-text text-danger"
+                           *ngIf="eventForm.get('street').errors.required"
+                           jhiTranslate="personalData.messages.validate.street.required">
+                        Your street is required.
+                    </small>
+                </div>
+
+                <label class="title-label" for="housenumber">Hausnummer</label>
+                <input type="text" class="form-control" name="housenumber" id="housenumber" formControlName="housenumber">
+                <div
+                    *ngIf="eventForm.get('housenumber').invalid && (eventForm.get('housenumber').dirty || eventForm.get('housenumber').touched)">
+                    <small class="form-text text-danger"
+                           *ngIf="eventForm.get('housenumber').errors.required"
+                           jhiTranslate="personalData.messages.validate.houseNumber.required">
+                        Your house number is required.
+                    </small>
+                    <small class="form-text text-danger"
+                           *ngIf="eventForm.get('housenumber').errors.pattern"
+                           jhiTranslate="personalData.messages.validate.houseNumber.pattern">
+                        Your house number should only include digits.
+                    </small>
+                </div>
+
+                <label class="title-label" for="zipcode">Postleitzahl</label>
+                <input type="text" class="form-control" name="zipcode" id="zipcode" formControlName="zipcode">
+                <div
+                    *ngIf="eventForm.get('zipcode').invalid && (eventForm.get('zipcode').dirty || eventForm.get('zipcode').touched)">
+                    <small class="form-text text-danger"
+                           *ngIf="eventForm.get('zipcode').errors.required"
+                           jhiTranslate="personalData.messages.validate.postal.required">
+                        Your postal is required.
+                    </small>
+                    <small class="form-text text-danger"
+                           *ngIf="eventForm.get('zipcode').errors.pattern"
+                           jhiTranslate="personalData.messages.validate.postal.pattern">
+                        Your postal needs to match the format: 12345.
+                    </small>
+                </div>
+
+                <label class="title-label" for="city">Wohnort</label>
+                <input type="text" class="form-control" name="city" id="city" formControlName="city">
+                <div
+                    *ngIf="eventForm.get('city').invalid && (eventForm.get('city').dirty || eventForm.get('city').touched)">
+                    <small class="form-text text-danger"
+                           *ngIf="eventForm.get('city').errors.required"
+                           jhiTranslate="personalData.messages.validate.town.required">
+                        Your town is required.
+                    </small>
+                </div>
+
+                <label class="title-label" for="country">Land</label>
+                <input type="text" class="form-control" name="country" id="country" formControlName="country">
+                <div
+                    *ngIf="eventForm.get('country').invalid && (eventForm.get('country').dirty || eventForm.get('country').touched)">
+                    <small class="form-text text-danger"
+                           *ngIf="eventForm.get('country').errors.required"
+                           jhiTranslate="personalData.messages.validate.country.required">
+                        Your country is required.
+                    </small>
+                </div>
+
+                <label class="title-label" for="additional">Zusatz</label>
+                <input type="text" class="form-control" name="additional" id="additional" formControlName="additional">
+            </div>
+        </form>
+        <p></p>
+    </div>
+</div>
+
+<div class="modal-footer">
+    <div class="row">
+        <div class="col-md-4">
+            <button type="button" [disabled]="eventForm.invalid" class="btn btn-primary" (click)="emitLocation()">
+                Auswählen
+            </button>
+        </div>
+    </div>
+</div>

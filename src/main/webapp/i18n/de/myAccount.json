@@ -1,0 +1,26 @@
+{
+  "fahrschuleAsaApp": {
+    "myAccount": {
+      "home": {
+        "title": "My Accounts",
+        "createLabel": "My Account erstellen",
+        "createOrEditLabel": "My Account erstellen oder bearbeiten",
+        "notFound": "No My Accounts found"
+      },
+      "created": "My Account erstellt mit ID {{ param }}",
+      "updated": "My Account aktualisiert mit ID {{ param }}",
+      "deleted": "My Account gelöscht mit ID {{ param }}",
+      "delete": {
+        "question": "Soll My Account {{ id }} wirklich dauerhaft gelöscht werden?"
+      },
+      "detail": {
+        "title": "My Account"
+      },
+      "active": "Active",
+      "birthdate": "Birthdate",
+      "address": "Address",
+      "phoneNumber": "Phone Number",
+      "user": "User"
+    }
+  }
+}

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:lang="${#locale.language}">
+    <head>
+        <title th:text="#{email.categoryChanged.title}">A canceled driving lesson is available</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+       <!-- <link rel="shortcut icon" th:href="@{|${baseUrl}/favicon.ico|}" /> -->
+    </head>
+    <body>
+        <p th:text="#{email.greeting(${user.firstName})}">
+            Dear
+        </p>
+        <!--TODO review url-->
+        <p> <span th:text="#{email.categoryChanged.text1}"></span> <a th:href="@{${baseUrl} + '/account/preferences'}" th:text="'Präferenzen'"></a>
+        </p>
+        <p>
+            <span th:text="#{email.end}">Regards, </span>
+            <br/>
+            <em th:text="${signature}">Your driving school</em>
+        </p>
+    </body>
+</html>

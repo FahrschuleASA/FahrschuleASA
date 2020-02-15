@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:lang="${#locale.language}">
+    <head>
+        <title th:text="#{email.bookStudentTeacher.title}"></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+       <!-- <link rel="shortcut icon" th:href="@{|${baseUrl}/favicon.ico|}" /> -->
+    </head>
+    <body>
+        <p th:text="#{email.greeting(${user.firstName})}">
+            Dear
+        </p>
+        <p th:text="#{email.bookStudentTeacher.text1(${date},${beginTime},${endTime})}">
+        </p>
+        <p>
+            <span th:text="#{email.end}">Regards, </span>
+            <br/>
+            <em th:text="${signature}">Your driving school</em>
+        </p>
+    </body>
+</html>

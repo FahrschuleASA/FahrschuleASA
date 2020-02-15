@@ -1,0 +1,16 @@
+{
+  "fahrschuleAsaApp": {
+    "DrivingCategory": {
+      "null": "",
+      "MOFA": "MOFA",
+      "AM": "AM",
+      "A1": "A1",
+      "A2": "A2",
+      "A": "A",
+      "B": "B",
+      "B96": "B96",
+      "BE": "BE",
+      "L": "L"
+    }
+  }
+}

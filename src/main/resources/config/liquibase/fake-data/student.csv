@@ -1,0 +1,3 @@
+id;active;birthdate;phone_number;category;ready_for_theory;wanted_lessons;changed_preferences;address_id;user_id;teacher_id;teaching_diagram_id;allowed_lessons;mission_accomplished;notify_free_lesson
+1;true;2000-04-12;015667346;BE;true;5;false;2;6;1;1;2;false;true
+2;true;2002-06-24;015783778;L;false;5;false;3;7;1;2;2;false;false

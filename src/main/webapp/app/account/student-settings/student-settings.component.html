@@ -1,0 +1,98 @@
+<div>
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <h2 jhiTranslate="settings.title" [translateValues]="{username: login}"
+                *ngIf="login">User settings for [<b>{{login}}</b>]
+            </h2>
+
+            <div class="alert alert-success" *ngIf="success" jhiTranslate="settings.messages.success">
+                <strong>Settings saved!</strong>
+            </div>
+
+            <jhi-alert-error></jhi-alert-error>
+            <form name="form" role="form" (ngSubmit)="save()" [formGroup]="settingsForm"
+                  *ngIf="login" novalidate>
+                <div class="form-group" *ngIf="languages && languages.length > 0">
+                    <div class="description" jhiTranslate="settings.description.language">
+                        In which language do you want the system to run?
+                    </div>
+                    <label for="langKey" jhiTranslate="settings.form.language">Language</label>
+                    <select class="form-control col-md-2" id="langKey" name="langKey" formControlName="langKey">
+                        <option *ngFor="let language of languages"
+                                [value]="language">{{language | findLanguageFromKey}}</option>
+                    </select>
+                </div>
+                <hr>
+                <div class="form-group mb">
+                    <div class="description" jhiTranslate="settings.description.active">
+                        Are you an active student?
+                    </div>
+                    <div class="custom-control custom-switch">
+                        <input type="checkbox" class="custom-control-input" value="1" id="active" name="active"
+                               formControlName="active">
+                        <label class="custom-control-label" for="active" jhiTranslate="settings.form.active">Active</label>
+                    </div>
+                    <div *ngIf="!settingsForm.get('active').value" class="shifted">
+                        <div class="inactive-description" jhiTranslate="settings.description.inactiveDuration">
+                            For how many days will you be inactive?
+                        </div>
+                        <div *ngIf="!minInactive" class="description" jhiTranslate="settings.description.inactiveDuration0">
+                            0 means that you are inactive for an undefined time.
+                        </div>
+                        <label class="form-control-label" for="inactiveDuration" jhiTranslate="settings.form.inactiveDuration">Dauer der Inaktivität</label>
+                        <input type="number" [min]="minInactive" [max]="maxInactive" class="form-control number-input" id="inactiveDuration" name="inactiveDuration"
+                               formControlName="inactiveDuration">
+                    </div>
+                </div>
+                <hr>
+                <div class="form-group">
+                    <div class="description" jhiTranslate="settings.description.wantedLessons" [translateValues]="{maxLessons: allowedLessons}">
+                        How many weekly lessons do you prefer? (Max.: {{allowedLessons}})
+                    </div>
+                    <label class="form-control-label" for="wantedLessons" jhiTranslate="settings.form.wantedLessons">Wanted lessons</label>
+                    <input type="number" min="0" [max]="allowedLessons" class="form-control number-input" id="wantedLessons" name="wantedLessons"
+                           formControlName="wantedLessons">
+                </div>
+                <hr>
+                <div class="form-group">
+                    <div class="description" jhiTranslate="settings.description.readyForTheory">
+                        Are you ready for the theory exam?
+                    </div>
+                    <div class="custom-control custom-switch">
+                        <input type="checkbox" class="custom-control-input" value="1" id="readyForTheory" name="readyForTheory"
+                               formControlName="readyForTheory">
+                        <label class="custom-control-label" for="readyForTheory" jhiTranslate="settings.form.readyForTheoryFlag">Active</label>
+                    </div>
+                </div>
+                <hr>
+                <label jhiTranslate="settings.form.notifications">Notifications</label>
+                <div class="form-group mb">
+                    <div class="custom-control custom-switch">
+                        <input type="checkbox" class="custom-control-input" value="1" id="notificationsCancelDrivingLesson" name="notificationsCancelDrivingLesson" checked="checked" disabled="disabled">
+                        <span class="custom-control-label" for="notificationsCancelDrivingLesson" jhiTranslate="settings.form.notificationsCancelDrivingLesson">Active</span>
+                    </div>
+                    <div class="custom-control custom-switch">
+                        <input type="checkbox" class="custom-control-input" value="1" id="notificationsBookedDrivingLesson" name="notificationsBookedDrivingLesson" checked="checked" disabled="disabled">
+                        <span class="custom-control-label" for="notificationsBookedDrivingLesson" jhiTranslate="settings.form.notificationsBookedDrivingLesson">Active</span>
+                    </div>
+                    <div class="custom-control custom-switch">
+                        <input type="checkbox" class="custom-control-input" value="1" id="notificationsTimeSlotChanged" name="notificationsTimeSlotChanged" checked="checked" disabled="disabled">
+                        <span class="custom-control-label" for="notificationsTimeSlotChanged" jhiTranslate="settings.form.notificationsTimeSlotChanged">Active</span>
+                    </div>
+                    <div class="custom-control custom-switch">
+                        <input type="checkbox" class="custom-control-input" value="1" id="notificationsCategoryChanged" name="notificationsCategoryChanged" checked="checked" disabled="disabled">
+                        <span class="custom-control-label" for="notificationsCategoryChanged" jhiTranslate="settings.form.notificationsCategoryChanged">Active</span>
+                    </div>
+                    <div class="custom-control custom-switch">
+                        <input type="checkbox" class="custom-control-input" value="1" id="notificationsBookableDrivingLesson" name="notificationsBookableDrivingLesson" formControlName="notificationsBookableDrivingLesson">
+                        <label class="custom-control-label no-bold" for="notificationsBookableDrivingLesson" jhiTranslate="settings.form.notificationsBookableDrivingLesson">Active</label>
+                    </div>
+                </div>
+                <hr>
+                <button type="submit" [disabled]="settingsForm.invalid" class="btn btn-primary"
+                        jhiTranslate="settings.form.button">Save
+                </button>
+            </form>
+        </div>
+    </div>
+</div>

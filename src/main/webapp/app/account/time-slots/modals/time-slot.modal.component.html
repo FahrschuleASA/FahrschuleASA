@@ -1,0 +1,50 @@
+<div class="modal-header">
+    <h4 class="modal-title">Zeitslot-Details </h4>
+    <button aria-label="Close" data-dismiss="modal" class="close" type="button" (click)="cancel()">
+        <span aria-hidden="true">x</span>
+    </button>
+</div>
+<form name="form" role="form" [formGroup]="form" novalidate>
+    <div class="modal-body">
+
+        <div class="col-md-8" *ngIf="!_fresh">
+            <mat-checkbox [(ngModel)]="blocked" [ngModelOptions]="{standalone: true}" name="blocked-slot">Zeitslot
+                blockieren
+            </mat-checkbox>
+        </div>
+
+        <div class="col-md-8" *ngIf="!blocked">
+            <mat-form-field>
+                <mat-label>Bevorzugte Kategorien</mat-label>
+                <mat-select multiple formControlName="preferredCategories">
+                    <mat-option *ngFor="let option of drivingCategoryOptions" [value]="option">
+                        {{option.toString()}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Optionale Kategorien</mat-label>
+                <mat-select multiple formControlName="optionalCategories">
+                    <mat-option *ngFor="let option of drivingCategoryOptions" [value]="option">
+                        {{option.toString()}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+    </div>
+
+
+    <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="updateEvent()" *ngIf="!_fresh">
+            Ändern
+        </button>
+        <button type="button" class="btn btn-primary" (click)="createTimeSlot()" *ngIf="_fresh">
+            Speichern
+        </button>
+        <button type="button" class="btn btn-danger" (click)="deleteTimeSlot()" *ngIf="!_fresh">
+            Löschen
+        </button>
+    </div>
+</form>

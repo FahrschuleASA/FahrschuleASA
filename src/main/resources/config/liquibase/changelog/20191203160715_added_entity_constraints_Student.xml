@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+    <!--
+        Added the constraints for entity Student.
+    -->
+    <changeSet id="20191203160715-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="teaching_diagram_id"
+                                 baseTableName="student"
+                                 constraintName="fk_student_teaching_diagram_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="teaching_diagram"/>
+
+        <addForeignKeyConstraint baseColumnNames="student_id"
+                                 baseTableName="student_theory_lessons"
+                                 constraintName="fk_student_theory_lessons_student_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="student"/>
+
+        <addForeignKeyConstraint baseColumnNames="theory_lessons_id"
+                                 baseTableName="student_theory_lessons"
+                                 constraintName="fk_student_theory_lessons_theory_lessons_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="theory_lesson"/>
+        
+        <addForeignKeyConstraint baseColumnNames="student_id"
+                                 baseTableName="student_optional_driving_lessons"
+                                 constraintName="fk_student_optional_driving_lessons_student_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="student"/>
+
+        <addForeignKeyConstraint baseColumnNames="optional_driving_lessons_id"
+                                 baseTableName="student_optional_driving_lessons"
+                                 constraintName="fk_student_optional_driving_lessons_optional_driving_lessons_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="driving_lesson"/>
+        
+        <addForeignKeyConstraint baseColumnNames="teacher_id"
+                                 baseTableName="student"
+                                 constraintName="fk_student_teacher_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="teacher"/>
+
+    </changeSet>
+</databaseChangeLog>

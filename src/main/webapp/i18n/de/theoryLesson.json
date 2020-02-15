@@ -1,0 +1,24 @@
+{
+  "fahrschuleAsaApp": {
+    "theoryLesson": {
+      "home": {
+        "title": "Theoriestunde",
+        "createLabel": "Theoriestunde erstellen",
+        "createOrEditLabel": "Theoriestunde erstellen oder bearbeiten",
+        "notFound": "Keine Theoriestunde gefunden"
+      },
+      "created": "Theoriestunde erstellt mit ID {{ param }}",
+      "updated": "Theoriestunde aktualisiert mit ID {{ param }}",
+      "deleted": "Theoriestunde gelöscht mit ID {{ param }}",
+      "delete": {
+        "question": "Soll Theoriestunde {{ id }} wirklich dauerhaft gelöscht werden?"
+      },
+      "detail": {
+        "title": "Theoriestunde"
+      },
+      "subject": "Thema der Theoriestunde",
+      "teacher": "Fahrlehrer",
+      "student": "Fahrschüler"
+    }
+  }
+}

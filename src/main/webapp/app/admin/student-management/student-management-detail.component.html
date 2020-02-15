@@ -1,0 +1,165 @@
+<div class="row justify-content-center">
+    <div class="col-10">
+        <div *ngIf="student">
+            <h2>
+                <span jhiTranslate="studentManagement.detail.title">Student</span> [<b>{{student.user.login}}</b>]
+            </h2>
+            <hr>
+            <div class="row">
+                <div class="col-3">
+                    <h3 jhiTranslate="studentManagement.detail.personalData"></h3>
+                    <dl class="row-md jh-entity-details">
+                        <dt><span jhiTranslate="userManagement.login">Login</span></dt>
+                        <dd>
+                            <span>{{student.user.login}}</span>
+                        </dd>
+                        <dt><span jhiTranslate="userManagement.firstName">First Name</span></dt>
+                        <dd>{{student.user.firstName}}</dd>
+                        <dt><span jhiTranslate="userManagement.lastName">Last Name</span></dt>
+                        <dd>{{student.user.lastName}}</dd>
+                        <dt><span jhiTranslate="personalData.form.birthDate">Geburtstag</span></dt>
+                        <dd>{{birthdate}}</dd>
+                        <hr>
+                        <dt><span jhiTranslate="global.form.email.label">Email</span></dt>
+                        <dd>{{student.user.email}}</dd>
+                        <dt><span jhiTranslate="personalData.form.phoneNumber">Phone number</span></dt>
+                        <dd>{{student.phoneNumber}}</dd>
+                        <hr>
+                        <dt><span jhiTranslate="personalData.form.address">Address</span></dt>
+                        <dd>
+                            {{student.address.street}} {{student.address.houseNumber}}, {{student.address.additional}}<br>
+                            {{student.address.postal}} {{student.address.town}}<br>
+                            {{student.address.country}}
+                        </dd>
+                    </dl>
+                </div>
+                <div *ngIf="teachingDiagram" class="col-4">
+                    <h3 jhiTranslate="studentManagement.detail.teachingData"></h3>
+                    <dl class="row-md jh-entity-details">
+                        <dt><span jhiTranslate="fahrschuleAsaApp.teachingData.drivingCategory">Driving category</span></dt>
+                        <dd>
+                            <span class="progress-value">
+                                {{teachingDiagram.drivingCategory}}
+                            </span>
+                        </dd>
+                        <dt><span jhiTranslate="fahrschuleAsaApp.teachingData.drivingLessonsCount">Driving Lessons</span></dt>
+                        <dd>
+                            <span class="progress-value">
+                                {{teachingDiagram.drivingLessonsCount}} Stunde(n)
+                            </span>
+                        </dd>
+                        <dt *ngIf="teachingDiagram.missedDrivingLessonsCount"><span jhiTranslate="fahrschuleAsaApp.teachingData.missedDrivingLessonsCount">Missed Driving Lessons</span></dt>
+                        <dd *ngIf="teachingDiagram.missedDrivingLessonsCount">
+                            <span class="progress-value">
+                                {{teachingDiagram.missedDrivingLessonsCount}} Stunde(n)
+                            </span>
+                        </dd>
+                        <dt *ngIf="teachingDiagram.lateMissedDrivingLessonsCount"><span jhiTranslate="fahrschuleAsaApp.teachingData.lateMissedDrivingLessonsCount">Late Missed Driving Lessons</span></dt>
+                        <dd *ngIf="teachingDiagram.lateMissedDrivingLessonsCount">
+                            <span class="progress-value">
+                                {{teachingDiagram.lateMissedDrivingLessonsCount}} Stunde(n)
+                            </span>
+                        </dd>
+                        <dt><span jhiTranslate="fahrschuleAsaApp.teachingData.allowedLessons">Allowed Lessons</span></dt>
+                        <dd>
+                            <span class="progress-value">
+                                {{teachingDiagram.allowedLessons}}
+                            </span>
+                        </dd>
+                        <dt><span jhiTranslate="fahrschuleAsaApp.teachingData.theoryLessonsCount">Theory Lessons</span></dt>
+                        <dd>
+                            <span class="progress-value">
+                                {{teachingDiagram.theoryLessonsCount}} Stunde(n)
+                            </span>
+                        </dd>
+                    </dl>
+                </div>
+                <div *ngIf="teachingDiagram" class="col-4">
+                    <h3 jhiTranslate="studentManagement.detail.teachingDiagram"></h3>
+                    <dl class="row-md jh-entity-details">
+                        <dt><span jhiTranslate="fahrschuleAsaApp.teachingData.performance">Performance</span></dt>
+                        <dd class="mb">
+                            <ngb-progressbar [type]="get_type(teachingDiagram.performance)" [value]="teachingDiagram.performance" height="20px">
+                                <span class="progress-percentage">{{teachingDiagram.performance}} %</span>
+                            </ngb-progressbar>
+                        </dd>
+                        <dt><span jhiTranslate="fahrschuleAsaApp.teachingData.independence">Independence</span></dt>
+                        <dd class="mb">
+                            <ngb-progressbar [type]="get_type(teachingDiagram.independence)" [value]="teachingDiagram.independence" height="20px">
+                                <span class="progress-percentage">{{teachingDiagram.independence}} %</span>
+                            </ngb-progressbar>
+                        </dd>
+                        <dt><span jhiTranslate="fahrschuleAsaApp.teachingData.advanced">Advanced </span></dt>
+                        <dd>
+                            <ngb-progressbar [type]="get_type(teachingDiagram.advanced)" [value]="teachingDiagram.advanced" height="20px">
+                                <span class="progress-percentage">{{teachingDiagram.advanced}} %</span>
+                            </ngb-progressbar>
+                        </dd>
+                        <hr>
+                        <dt><span jhiTranslate="fahrschuleAsaApp.teachingData.basic">Basic</span></dt>
+                        <dd>
+                            <ngb-progressbar [type]="get_type(teachingDiagram.basic)" [value]="teachingDiagram.basic" height="20px">
+                                <span class="progress-percentage">{{teachingDiagram.basic}} %</span>
+                            </ngb-progressbar>
+                        </dd>
+                        <dt><span jhiTranslate="fahrschuleAsaApp.teachingData.overland">Overland</span></dt>
+                        <dd>
+                            <ngb-progressbar [type]="get_type(teachingDiagram.overland)" [value]="teachingDiagram.overland" height="20px">
+                                <span class="progress-percentage">{{teachingDiagram.overland}} %</span>
+                            </ngb-progressbar>
+                        </dd>
+                        <dt><span jhiTranslate="fahrschuleAsaApp.teachingData.autobahn">Autobahn</span></dt>
+                        <dd>
+                            <ngb-progressbar [type]="get_type(teachingDiagram.autobahn)" [value]="teachingDiagram.autobahn" height="20px">
+                                <span class="progress-percentage">{{teachingDiagram.autobahn}} %</span>
+                            </ngb-progressbar>
+                        </dd>
+                        <dt><span jhiTranslate="fahrschuleAsaApp.teachingData.night">Night</span></dt>
+                        <dd>
+                            <ngb-progressbar [type]="get_type(teachingDiagram.night)" [value]="teachingDiagram.night" height="20px">
+                                <span class="progress-percentage">{{teachingDiagram.night}} %</span>
+                            </ngb-progressbar>
+                        </dd>
+                        <hr>
+                        <!--<dd jhiTranslate="fahrschuleAsaApp.teachingDiagram.hours" [translateValues]="{value: teachingDiagram.overland}">{{teachingDiagram.overland}} hours</dd>-->
+                        <dt><span jhiTranslate="fahrschuleAsaApp.teachingData.basicHours">Basic driving lessons</span></dt>
+                        <dd>
+                    <span class="progress-value">
+                        {{teachingDiagram.basicCount}} Stunde(n)
+                    </span>
+                        </dd>
+                        <dt><span jhiTranslate="fahrschuleAsaApp.teachingData.overlandHours">Overland driving lessons</span></dt>
+                        <dd>
+                    <span class="progress-value">
+                        {{teachingDiagram.overlandCount}} Stunde(n)
+                    </span>
+                        </dd>
+                        <dt><span jhiTranslate="fahrschuleAsaApp.teachingData.autobahnHours">Autobahn driving lessons</span></dt>
+                        <dd>
+                    <span class="progress-value">
+                        {{teachingDiagram.autobahnCount}} Stunde(n)
+                    </span>
+                        </dd>
+                        <dt><span jhiTranslate="fahrschuleAsaApp.teachingData.nightHours">Night driving lessons</span></dt>
+                        <dd>
+                    <span class="progress-value">
+                        {{teachingDiagram.nightCount}} Stunde(n)
+                    </span>
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+            <button type="submit"
+                    routerLink="../../"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+            <button type="submit"
+                    [routerLink]="['../../', student.id, 'edit']"
+                    queryParamsHandling="merge"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon> <span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

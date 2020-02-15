@@ -1,0 +1,245 @@
+<div>
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <h2 jhiTranslate="personalData.title" [translateValues]="{username: personalDataForm.get('login').value}"
+                *ngIf="personalDataForm.get('login').value">Personal data of [<b>{{personalDataForm.get('login').value}}</b>]
+            </h2>
+
+            <div class="alert alert-success" *ngIf="success" jhiTranslate="personalData.messages.success">
+                <strong>Settings saved!</strong>
+            </div>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <form name="form" role="form" (ngSubmit)="save()" [formGroup]="personalDataForm"
+                  *ngIf="personalDataForm.get('login').value" novalidate>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="firstName" jhiTranslate="personalData.form.firstname">First
+                        Name</label>
+                    <input type="text" class="form-control" id="firstName" name="firstName"
+                           placeholder="{{'personalData.form.firstname.placeholder' | translate}}"
+                           formControlName="firstName">
+                    <div
+                        *ngIf="personalDataForm.get('firstName').invalid && (personalDataForm.get('firstName').dirty || personalDataForm.get('firstName').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="personalDataForm.get('firstName').errors.required"
+                               jhiTranslate="personalData.messages.validate.firstname.required">
+                            Your first name is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="personalDataForm.get('firstName').errors.minlength"
+                               jhiTranslate="personalData.messages.validate.firstname.minlength">
+                            Your first name is required to be at least 1 character.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="personalDataForm.get('firstName').errors.maxlength"
+                               jhiTranslate="personalData.messages.validate.firstname.maxlength">
+                            Your first name cannot be longer than 50 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="lastName" jhiTranslate="personalData.form.lastname">Last
+                        Name</label>
+                    <input type="text" class="form-control" id="lastName" name="lastName"
+                           placeholder="{{'personalData.form.lastname.placeholder' | translate}}"
+                           formControlName="lastName">
+                    <div
+                        *ngIf="personalDataForm.get('lastName').invalid && (personalDataForm.get('lastName').dirty || personalDataForm.get('lastName').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="personalDataForm.get('lastName').errors.required"
+                               jhiTranslate="personalData.messages.validate.lastname.required">
+                            Your last name is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="personalDataForm.get('lastName').errors.minlength"
+                               jhiTranslate="personalData.messages.validate.lastname.minlength">
+                            Your last name is required to be at least 1 character.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="personalDataForm.get('lastName').errors.maxlength"
+                               jhiTranslate="personalData.messages.validate.lastname.maxlength">
+                            Your last name cannot be longer than 50 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="birthDate" jhiTranslate="personalData.form.birthDate">Birthdate</label>
+                    <input type="text" class="form-control" id="birthDate" name="birthDate"
+                           placeholder="01.01.2000"
+                           formControlName="birthDate">
+                    <div
+                        *ngIf="personalDataForm.get('birthDate').invalid && (personalDataForm.get('birthDate').dirty || personalDataForm.get('birthDate').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="personalDataForm.get('birthDate').errors.required"
+                               jhiTranslate="personalData.messages.validate.birthDate.required">
+                            Your birthdate is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="personalDataForm.get('birthDate').errors.pattern"
+                               jhiTranslate="personalData.messages.validate.birthDate.pattern">
+                            Your birthdate should match the form: 'dd.mm.yyyy'.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="email" jhiTranslate="global.form.email.label">Email</label>
+                    <input type="email" class="form-control" id="email" name="email"
+                           placeholder="{{'global.form.email.placeholder' | translate}}"
+                           formControlName="email">
+                    <div
+                        *ngIf="personalDataForm.get('email').invalid && (personalDataForm.get('email').dirty || personalDataForm.get('email').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="personalDataForm.get('email').errors.required"
+                               jhiTranslate="global.messages.validate.email.required">
+                            Your email is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="personalDataForm.get('email').errors.email"
+                               jhiTranslate="global.messages.validate.email.invalid">
+                            Your email is invalid.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="personalDataForm.get('email').errors.minlength"
+                               jhiTranslate="global.messages.validate.email.minlength">
+                            Your email is required to be at least 5 characters.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="personalDataForm.get('email').errors.maxlength"
+                               jhiTranslate="global.messages.validate.email.maxlength">
+                            Your email cannot be longer than 100 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="phoneNumber" jhiTranslate="personalData.form.phoneNumber">Phone number</label>
+                    <input type="text" class="form-control" id="phoneNumber" name="phoneNumber"
+                           placeholder="0123456789"
+                           formControlName="phoneNumber">
+                    <div
+                        *ngIf="personalDataForm.get('phoneNumber').invalid && (personalDataForm.get('phoneNumber').dirty || personalDataForm.get('phoneNumber').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="personalDataForm.get('phoneNumber').errors.required"
+                               jhiTranslate="personalData.messages.validate.phoneNumber.required">
+                            Your phone number is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="personalDataForm.get('phoneNumber').errors.pattern"
+                               jhiTranslate="personalData.messages.validate.phoneNumber.pattern">
+                            Your phone number should match the form: '0123456789'.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="personalDataForm.get('phoneNumber').errors.maxlength"
+                               jhiTranslate="personalData.messages.validate.phoneNumber.maxlength">
+                            Your phone number cannot be longer than 20 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="description" jhiTranslate="personalData.form.addressNote">
+                    We use Nominatim (https://nominatim.openstreetmap.org) to transform the address data to coordinates.
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label class="form-control-label" for="street" jhiTranslate="personalData.form.street">Street</label>
+                            <input type="text" class="form-control" id="street" name="street"
+                                   placeholder="Musterstraße"
+                                   formControlName="street">
+                            <div
+                                *ngIf="personalDataForm.get('street').invalid && (personalDataForm.get('street').dirty || personalDataForm.get('street').touched)">
+                                <small class="form-text text-danger"
+                                       *ngIf="personalDataForm.get('street').errors.required"
+                                       jhiTranslate="personalData.messages.validate.street.required">
+                                    Your street is required.
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <label class="form-control-label" for="houseNumber" jhiTranslate="personalData.form.houseNumber">House number</label>
+                        <input type="text" class="form-control" id="houseNumber" name="houseNumber"
+                               placeholder="123"
+                               formControlName="houseNumber">
+                        <div
+                            *ngIf="personalDataForm.get('houseNumber').invalid && (personalDataForm.get('houseNumber').dirty || personalDataForm.get('houseNumber').touched)">
+                            <small class="form-text text-danger"
+                                   *ngIf="personalDataForm.get('houseNumber').errors.required"
+                                   jhiTranslate="personalData.messages.validate.houseNumber.required">
+                                Your house number is required.
+                            </small>
+                            <small class="form-text text-danger"
+                                   *ngIf="personalDataForm.get('houseNumber').errors.pattern"
+                                   jhiTranslate="personalData.messages.validate.houseNumber.pattern">
+                                Your house number should only include digits.
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label class="form-control-label" for="postal" jhiTranslate="personalData.form.postal">Postal Code</label>
+                            <input type="text" class="form-control" id="postal" name="postal"
+                                   placeholder="123456"
+                                   formControlName="postal">
+                            <div
+                                *ngIf="personalDataForm.get('postal').invalid && (personalDataForm.get('postal').dirty || personalDataForm.get('postal').touched)">
+                                <small class="form-text text-danger"
+                                       *ngIf="personalDataForm.get('postal').errors.required"
+                                       jhiTranslate="personalData.messages.validate.postal.required">
+                                    Your postal is required.
+                                </small>
+                                <small class="form-text text-danger"
+                                       *ngIf="personalDataForm.get('postal').errors.pattern"
+                                       jhiTranslate="personalData.messages.validate.postal.pattern">
+                                    Your postal needs to match the format: 12345.
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <label class="form-control-label" for="town" jhiTranslate="personalData.form.town">Town</label>
+                        <input type="text" class="form-control" id="town" name="town"
+                               placeholder="Musterdorf"
+                               formControlName="town">
+                        <div
+                            *ngIf="personalDataForm.get('town').invalid && (personalDataForm.get('town').dirty || personalDataForm.get('town').touched)">
+                            <small class="form-text text-danger"
+                                   *ngIf="personalDataForm.get('town').errors.required"
+                                   jhiTranslate="personalData.messages.validate.town.required">
+                                Your town is required.
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label class="form-control-label" for="country" jhiTranslate="personalData.form.country">Country</label>
+                            <input type="text" class="form-control" id="country" name="country"
+                                   formControlName="country">
+                            <div
+                                *ngIf="personalDataForm.get('country').invalid && (personalDataForm.get('country').dirty || personalDataForm.get('country').touched)">
+                                <small class="form-text text-danger"
+                                       *ngIf="personalDataForm.get('country').errors.required"
+                                       jhiTranslate="personalData.messages.validate.country.required">
+                                    Your country is required.
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <label class="form-control-label" for="additional" jhiTranslate="personalData.form.additional">Additional</label>
+                        <input type="text" class="form-control" id="additional" name="additional"
+                               formControlName="additional">
+                    </div>
+                </div>
+
+                <button type="submit" [disabled]="personalDataForm.invalid" class="btn btn-primary"
+                        jhiTranslate="personalData.form.button">Save
+                </button>
+            </form>
+        </div>
+    </div>
+</div>

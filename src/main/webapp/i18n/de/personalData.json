@@ -1,0 +1,68 @@
+{
+    "personalData": {
+        "title": "Persönliche Daten von Benutzer [<strong>{{username}}</strong>]",
+        "form": {
+            "firstname": "Vorname",
+            "firstname.placeholder": "Ihr Vorname",
+            "lastname": "Nachname",
+            "lastname.placeholder": "Ihr Nachname",
+            "birthDate": "Geburtsdatum",
+            "address": "Adresse",
+            "addressNote": "<b>Hinweis:</b> Wir verwenden Nominatim (<a href=\"https://nominatim.openstreetmap.org\" target=\"_blank\">https://nominatim.openstreetmap.org</a>) um die Adressdaten zu verarbeiten und in Koordinaten umzurechnen.",
+            "town": "Wohnort",
+            "street": "Straße",
+            "postal": "Postleitzahl",
+            "houseNumber": "Hausnummer",
+            "country": "Land",
+            "additional": "Zusatz",
+            "phoneNumber": "Telefonnummer",
+            "button": "Speichern"
+        },
+        "messages": {
+            "error": {
+                "fail": "<strong>Es ist ein Fehler aufgetreten!</strong> Die persönlichen Daten konnten nicht gespeichert werden.",
+                "emailexists": "<strong>Email wird bereits verwendet!</strong> Bitte wählen Sie eine andere aus."
+            },
+            "success": "<strong>Die Änderungen wurden gespeichert!</strong>",
+            "validate": {
+                "firstname": {
+                    "required": "Ihr Vorname wird benötigt.",
+                    "minlength": "Ihr Vorname muss mindestens 1 Zeichen lang sein",
+                    "maxlength": "Ihr Vorname darf nicht länger als 50 Zeichen sein"
+                },
+                "lastname": {
+                    "required": "Ihr Nachname wird benötigt.",
+                    "minlength": "Ihr Nachname muss mindestens 1 Zeichen lang sein",
+                    "maxlength": "Ihr Nachname darf nicht länger als 50 Zeichen sein"
+                },
+                "birthDate": {
+                    "required": "Ihr Geburtsdatum wird benötigt.",
+                    "pattern": "Das Geburtsdatum sollte folgendem Format entsprechen: 'dd.mm.yyyy'."
+                },
+                "town": {
+                    "required": "Ihr Wohnort wird benötigt."
+                },
+                "street": {
+                    "required": "Ihre Straße wird benötigt."
+                },
+                "postal": {
+                    "required": "Ihre Postleitzahl wird benötigt.",
+                    "pattern": "Ihre Postleitzahle sollte 5-stellig sein und ausschließlich Zahlen beinhalten."
+                },
+                "houseNumber": {
+                    "required": "Ihre Hausnummer wird benötigt.",
+                    "pattern": "Ihre Hausnummer sollte ausschließlich aus Zahlen bestehen."
+                },
+                "country": {
+                    "required": "Ihr Land wird benötigt."
+                },
+                "phoneNumber": {
+                    "required": "Ihre Telefonnummer wird benötigt.",
+                    "pattern": "Ihre Telefonnummer muss folgendem Format entsprechen: 0123456789",
+                    "maxlength": "Ihre Telefonnummer darf nicht länger als 20 Zeichen sein."
+                }
+
+            }
+        }
+    }
+}

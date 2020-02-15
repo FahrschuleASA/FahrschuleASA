@@ -1,0 +1,27 @@
+{
+  "fahrschuleAsaApp": {
+    "drivingLesson": {
+      "home": {
+        "title": "Driving Lessons",
+        "createLabel": "Driving Lesson erstellen",
+        "createOrEditLabel": "Driving Lesson erstellen oder bearbeiten",
+        "notFound": "No Driving Lessons found"
+      },
+      "created": "Driving Lesson erstellt mit ID {{ param }}",
+      "updated": "Driving Lesson aktualisiert mit ID {{ param }}",
+      "deleted": "Driving Lesson gelöscht mit ID {{ param }}",
+      "delete": {
+        "question": "Soll Driving Lesson {{ id }} wirklich dauerhaft gelöscht werden?"
+      },
+      "detail": {
+        "title": "Driving Lesson"
+      },
+      "category": "Category",
+      "lessonType": "Lesson Type",
+      "driver": "Driver",
+      "missing": "Missing",
+      "timeSlot": "Time Slot",
+      "optionalStudents": "Optional Students"
+    }
+  }
+}

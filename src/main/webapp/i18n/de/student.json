@@ -1,0 +1,35 @@
+{
+  "fahrschuleAsaApp": {
+    "student": {
+      "home": {
+        "title": "Fahrschüler",
+        "createLabel": "Fahrschüler erstellen",
+        "createOrEditLabel": "Fahrschüler erstellen oder bearbeiten",
+        "notFound": "Keine Fahrschüler gefunden"
+      },
+      "created": "Der Fahrschüler {{ param }} wurde erstellt",
+      "updated": "Die Änderungen an Fahrschüler {{ param }} wurden gespeichert",
+      "deleted": "Der Fahrschüler {{ param }} wurde gelöscht",
+      "delete": {
+        "question": "Soll Fahrschüler {{ id }} wirklich dauerhaft gelöscht werden?"
+      },
+      "detail": {
+        "title": "Fahrschüler"
+      },
+      "settings": {
+          "updated": "Die Einstellungen wurden gespeichert"
+      },
+      "category": "Kategorie",
+      "readyForTheory": "Bereit für die Theorieprüfung",
+      "wantedLessons": "Präferierte Fahrstunden",
+      "changedPreferences": "Präferenzen verändert",
+      "teachingDiagram": "Ausbildungsdiagrammkarte",
+      "preference": "Präferenzen",
+      "theoryLessons": "Theoriestunden",
+      "optionalDrivingLessons": "Optionale Fahrstunden",
+      "teacher": "Fahrlehrer",
+      "drivingLessons": "Fahrstunden",
+      "missedLessons": "Verpasste Fahrstunden"
+    }
+  }
+}

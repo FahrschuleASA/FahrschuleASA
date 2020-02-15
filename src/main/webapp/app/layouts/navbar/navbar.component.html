@@ -1,0 +1,161 @@
+<nav class="navbar navbar-light navbar-expand-md bg-light" *ngIf="isAuthenticated()">
+    <a class="navbar-brand logo" routerLink="/" (click)="collapseNavbar()">
+        <span class="logo-img"></span>
+        <span class="navbar-version">{{version}}</span>
+    </a>
+    <a class="navbar-toggler d-lg-none" href="javascript:void(0);" data-toggle="collapse"
+       data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+       aria-label="Toggle navigation" (click)="toggleNavbar()">
+        <fa-icon icon="bars"></fa-icon>
+    </a>
+    <div class="navbar-collapse collapse" id="navbarResponsive" [ngbCollapse]="isNavbarCollapsed">
+        <ul class="navbar-nav ml-auto">
+            <li *jhiHasAnyAuthority="['ROLE_STUDENT']" class="nav-item" routerLinkActive="active">
+                <a class="nav-link" routerLink="account/preferences" (click)="collapseNavbar()">
+                    <span>
+                        <fa-icon icon="calendar-plus"></fa-icon>
+                        <span jhiTranslate="global.menu.preferences">Preferences</span>
+                    </span>
+                </a>
+            </li>
+            <li *jhiHasAnyAuthority="['ROLE_TEACHER']" class="nav-item" routerLinkActive="active">
+                <a class="nav-link" routerLink="account/time-slots" (click)="collapseNavbar()">
+                    <span>
+                        <fa-icon icon="calendar-plus"></fa-icon>
+                        <span jhiTranslate="global.menu.timeSlots">Time Slots</span>
+                    </span>
+                </a>
+            </li>
+            <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                <a class="nav-link" routerLink="/" (click)="collapseNavbar()">
+                    <span>
+                        <fa-icon icon="calendar-alt"></fa-icon>
+                        <span jhiTranslate="global.menu.home">Home</span>
+                    </span>
+                </a>
+            </li>
+            <li *jhiHasAnyAuthority="['ROLE_ADMIN', 'ROLE_TEACHER']" ngbDropdown class="nav-item dropdown pointer"
+                display="dynamic"
+                routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="admin-menu">
+                    <span>
+                        <fa-icon icon="cogs"></fa-icon>
+                        <span jhiTranslate="global.menu.admin.main">Administration</span>
+                    </span>
+                </a>
+                <ul class="dropdown-menu" ngbDropdownMenu aria-labelledby="admin-menu">
+                    <li *jhiHasAnyAuthority="['ROLE_ADMIN']">
+                        <a class="dropdown-item" routerLink="admin/driving-school-configuration"
+                           routerLinkActive="active"
+                           (click)="collapseNavbar()">
+                            <fa-icon icon="wrench" fixedWidth="true"></fa-icon>
+                            <span jhiTranslate="global.menu.admin.drivingSchoolConfiguration">Driving School Configuration</span>
+                        </a>
+                    </li>
+                    <li *jhiHasAnyAuthority="['ROLE_ADMIN']">
+                        <a class="dropdown-item" routerLink="admin/admin-management" routerLinkActive="active"
+                           (click)="collapseNavbar()">
+                            <fa-icon icon="user-shield" fixedWidth="true"></fa-icon>
+                            <span jhiTranslate="global.menu.admin.adminManagement">Admin management</span>
+                        </a>
+                    </li>
+                    <li *jhiHasAnyAuthority="['ROLE_ADMIN']">
+                        <a class="dropdown-item" routerLink="admin/teacher-management" routerLinkActive="active"
+                           (click)="collapseNavbar()">
+                            <fa-icon icon="user" fixedWidth="true"></fa-icon>
+                            <span jhiTranslate="global.menu.admin.teacherManagement">Teacher management</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" routerLink="admin/student-management" routerLinkActive="active"
+                           (click)="collapseNavbar()">
+                            <fa-icon icon="user-graduate" fixedWidth="true"></fa-icon>
+                            <span jhiTranslate="global.menu.admin.studentManagement">Student management</span>
+                        </a>
+                    </li>
+                    <!-- jhipster-needle-add-element-to-admin-menu - JHipster will add entities to the admin menu here -->
+                </ul>
+            </li>
+            <li ngbDropdown class="nav-item dropdown pointer" display="dynamic"
+                *ngIf="languages && languages.length > 1">
+                <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);"
+                   id="languagesnavBarDropdown">
+                    <span>
+                        <fa-icon icon="flag"></fa-icon>
+                        <span jhiTranslate="global.menu.language">Language</span>
+                    </span>
+                </a>
+                <ul class="dropdown-menu" ngbDropdownMenu aria-labelledby="languagesnavBarDropdown">
+                    <li *ngFor="let language of languages">
+                        <a class="dropdown-item" [jhiActiveMenu]="language" href="javascript:void(0);"
+                           (click)="changeLanguage(language);collapseNavbar();">{{language | findLanguageFromKey}}</a>
+                    </li>
+                </ul>
+            </li>
+            <li ngbDropdown class="nav-item dropdown pointer" display="dynamic" routerLinkActive="active"
+                [routerLinkActiveOptions]="{exact: true}">
+                <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="account-menu">
+                  <span *ngIf="!getImageUrl()">
+                    <fa-icon icon="user"></fa-icon>
+                    <span jhiTranslate="global.menu.account.main">
+                      Account
+                    </span>
+                  </span>
+                    <span *ngIf="getImageUrl()">
+                      <img [src]="getImageUrl()" class="profile-image rounded-circle" alt="Avatar">
+                  </span>
+                </a>
+                <ul class="dropdown-menu" ngbDropdownMenu aria-labelledby="account-menu">
+                    <li *jhiHasAnyAuthority="['ROLE_STUDENT']">
+                        <a class="dropdown-item" routerLink="account/personal-data" routerLinkActive="active"
+                           (click)="collapseNavbar()">
+                            <fa-icon icon="user" fixedWidth="true"></fa-icon>
+                            <span jhiTranslate="global.menu.account.personalData">Personal Data</span>
+                        </a>
+                    </li>
+                    <li *jhiHasAnyAuthority="['ROLE_STUDENT']">
+                        <a class="dropdown-item" routerLink="account/teaching-data" routerLinkActive="active"
+                           (click)="collapseNavbar()">
+                            <fa-icon icon="address-card" fixedWidth="true"></fa-icon>
+                            <span jhiTranslate="global.menu.account.teachingData">Teaching Data</span>
+                        </a>
+                    </li>
+                    <li *jhiHasAnyAuthority="['ROLE_ADMIN', 'ROLE_TEACHER']">
+                        <a class="dropdown-item" routerLink="account/edit-personal-data" routerLinkActive="active"
+                           (click)="collapseNavbar()">
+                            <fa-icon icon="user-edit" fixedWidth="true"></fa-icon>
+                            <span jhiTranslate="global.menu.account.editPersonalData">Edit Personal Data</span>
+                        </a>
+                    </li>
+                    <li *jhiHasAnyAuthority="['ROLE_STUDENT']">
+                        <a class="dropdown-item" routerLink="account/student-settings" routerLinkActive="active"
+                           (click)="collapseNavbar()">
+                            <fa-icon icon="wrench" fixedWidth="true"></fa-icon>
+                            <span jhiTranslate="global.menu.account.settings">Settings</span>
+                        </a>
+                    </li>
+                    <li *jhiHasAnyAuthority="['ROLE_ADMIN', 'ROLE_TEACHER']">
+                        <a class="dropdown-item" routerLink="account/settings" routerLinkActive="active"
+                           (click)="collapseNavbar()">
+                            <fa-icon icon="wrench" fixedWidth="true"></fa-icon>
+                            <span jhiTranslate="global.menu.account.settings">Settings</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" routerLink="account/password" routerLinkActive="active"
+                           (click)="collapseNavbar()">
+                            <fa-icon icon="lock" fixedWidth="true"></fa-icon>
+                            <span jhiTranslate="global.menu.account.password">Password</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" (click)="logout()" id="logout">
+                            <fa-icon icon="sign-out-alt" fixedWidth="true"></fa-icon>
+                            <span jhiTranslate="global.menu.account.logout">Sign out</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</nav>

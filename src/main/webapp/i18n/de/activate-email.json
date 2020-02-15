@@ -1,0 +1,9 @@
+{
+    "activate-email": {
+        "title": "Aktivierung der neuen E-Mail-Adresse",
+        "messages": {
+            "success": "<strong>Ihre neue E-Mail-Adresse wurde aktiviert.</strong>",
+            "error": "<strong>Ihre neue E-Mail-Adresse konnte nicht aktiviert werden.</strong>"
+        }
+    }
+}

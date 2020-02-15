@@ -1,0 +1,64 @@
+<div class="modal-header">
+    <h4 class="modal-title">Theoriestunde<br>
+        <p style="font-size: small">{{eventStartString}}  - {{eventEndString}}</p>
+    </h4>
+    <button aria-label="Close" data-dismiss="modal" class="close" type="button" (click)="cancel()">
+        <span aria-hidden="true">x</span>
+    </button>
+</div>
+
+<div class="modal-body">
+    <form class="form" role="form" [formGroup]="eventForm">
+        <div class="form-group">
+            <label class="title-label" for="title">Thema</label>
+            <input type="text" class="form-control" name="title" id="title" value="{{subject}}"
+                   formControlName="title">
+        </div>
+
+        <form class="autocomplete-form" *ngIf="_isAdminView && _fresh">
+            <mat-form-field class=autocomplete-full-width>
+                <input type="text" placeholder="Lehrer festlegen" id="teacherInput" matInput
+                       [formControl]="autocompleteControlTeacher" [matAutocomplete]="auto">
+                <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selectTeacher($event.option.value)">
+                    <mat-option *ngFor="let option of filteredTeacherOptions | async" [value]="option">
+                        {{option.user.firstName + ' ' + option.user.lastName}}
+                    </mat-option>
+                </mat-autocomplete>
+            </mat-form-field>
+        </form>
+
+        <div class="form-group" *ngIf="!_fresh">
+            <label class="title-label" for="title">Teilnehmer</label>
+            <mat-action-list>
+                <mat-list-item *ngFor="let student of students">
+                    <button mat-list-item (click)="switchStudentStatus(student)"
+                            [class.active]="deletedStudents.includes(student)">{{student.firstname}} {{student.lastname}}</button>
+                </mat-list-item>
+            </mat-action-list>
+        </div>
+
+        <form class="autocomplete-form" *ngIf="!_fresh">
+            <mat-form-field class=autocomplete-full-width>
+                <input type="text" placeholder="Schüler hinzufügen" id="studentInput" matInput
+                       [formControl]="autocompleteControlStudent" [matAutocomplete]="auto">
+                <mat-autocomplete #auto="matAutocomplete" (optionSelected)="addStudent($event.option.value)">
+                    <mat-option *ngFor="let option of filteredStudentOptions | async" [value]="option">
+                        {{option.firstname + ' ' + option.lastname}}
+                    </mat-option>
+                </mat-autocomplete>
+            </mat-form-field>
+        </form>
+    </form>
+</div>
+
+<div class="modal-footer">
+    <button type="button" class="btn btn-primary" (click)="updateTheoryLesson()" *ngIf="!_fresh">
+        Speichern
+    </button>
+    <button type="button" class="btn btn-primary" (click)="createTheoryLesson()" *ngIf="_fresh">
+        Erstellen
+    </button>
+    <button type="button" class="btn btn-danger" (click)="deleteTheoryLesson()" *ngIf="!_fresh">
+        Löschen
+    </button>
+</div>

@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <property name="autoIncrement" value="true"/>
+
+    <changeSet author="liquibase-docs" id="sql-example" runAlways="true">
+        <sql>
+            SET FOREIGN_KEY_CHECKS=0;
+        </sql>
+    </changeSet>
+
+    <changeSet id="000000000202020202020202020202" author="jakob">
+        <loadData
+            file="config/liquibase/data/user.csv"
+            separator=";"
+            tableName="jhi_user">
+            <column name="activated" type="boolean"/>
+            <column name="created_date" type="timestamp"/>
+        </loadData>
+        <dropDefaultValue tableName="jhi_user" columnName="created_date" columnDataType="datetime"/>
+
+        <loadData
+            file="config/liquibase/data/authority.csv"
+            separator=";"
+            tableName="jhi_authority"/>
+
+        <loadData
+            file="config/liquibase/data/user_authority.csv"
+            separator=";"
+            tableName="jhi_user_authority"/>
+    </changeSet>
+
+    <changeSet id="000000000202020202020202020203" author="jakob" context="faker">
+        <loadData
+            file="config/liquibase/fake-data/user.csv"
+            separator=";"
+            tableName="jhi_user">
+            <column name="activated" type="boolean"/>
+            <column name="created_date" type="timestamp"/>
+        </loadData>
+        <dropDefaultValue tableName="jhi_user" columnName="created_date" columnDataType="datetime"/>
+
+        <loadData
+            file="config/liquibase/fake-data/user_authority.csv"
+            separator=";"
+            tableName="jhi_user_authority"/>
+
+        <loadData
+            file="config/liquibase/fake-data/location.csv"
+            separator=";"
+            tableName="location">
+            <column name="id" type="numeric"/>
+            <column name="longitude" type="numeric"/>
+            <column name="latitude" type="numeric"/>
+            <column name="town" type="string"/>
+            <column name="street" type="string"/>
+            <column name="postal" type="string"/>
+            <column name="house_number" type="numeric"/>
+            <column name="country" type="string"/>
+            <column name="additional" type="string"/>
+        </loadData>
+
+        <loadData
+            file="config/liquibase/fake-data/teaching_diagram.csv"
+            separator=";"
+            tableName="teaching_diagram">
+            <column name="id" type="numeric"/>
+            <column name="basic" type="numeric"/>
+            <column name="advanced" type="numeric"/>
+            <column name="performance" type="numeric"/>
+            <column name="independence" type="numeric"/>
+            <column name="overland" type="numeric"/>
+            <column name="autobahn" type="numeric"/>
+            <column name="night" type="numeric"/>
+        </loadData>
+
+        <loadData
+            file="config/liquibase/fake-data/administrator.csv"
+            separator=";"
+            tableName="administrator">
+            <column name="id" type="numeric"/>
+            <column name="active" type="boolean"/>
+            <column name="birthdate" type="date"/>
+            <column name="phone_number" type="string"/>
+            <column name="address_id" type="numeric" />
+            <column name="user_id" type="numeric" />
+        </loadData>
+
+        <loadData
+            file="config/liquibase/fake-data/teacher.csv"
+            separator=";"
+            tableName="teacher">
+            <column name="id" type="numeric"/>
+            <column name="active" type="boolean" />
+            <column name="birthdate" type="date" />
+            <column name="phone_number" type="string" />
+            <column name="changed_time_slots" type="boolean" />
+            <column name="school_owner" type="boolean" />
+            <column name="address_id" type="numeric" />
+            <column name="user_id" type="numeric" />
+        </loadData>
+
+        <loadData
+            file="config/liquibase/fake-data/student.csv"
+            separator=";"
+            tableName="student">
+            <column name="id" type="numeric"/>
+            <column name="active" type="boolean" />
+            <column name="birthdate" type="date" />
+            <column name="phone_number" type="string" />
+            <column name="category" type="string"/>
+            <column name="ready_for_theory" type="boolean"/>
+            <column name="wanted_lessons" type="numeric"/>
+            <column name="changed_preferences" type="boolean"/>
+            <column name="address_id" type="numeric" />
+            <column name="user_id" type="numeric" />
+            <column name="teacher_id" type="numeric" />
+            <column name="teaching_diagram_id" type="numeric" />
+            <column name="allowed_lessons" type="numeric" />
+            <column name="mission_accomplished" type="boolean" />
+            <column name="notify_free_lesson" type="boolean" />
+        </loadData>
+
+        <loadData
+            file="config/liquibase/fake-data/time_slot.csv"
+            separator=";"
+            tableName="time_slot">
+            <column name="id" type="numeric"/>
+            <column name="begin" type="numeric"/>
+            <column name="end" type="numeric"/>
+            <column name="day" type="string"/>
+            <column name="last_scheduled_student_id" type="numeric" />
+            <column name="teacher_id" type="numeric" />
+        </loadData>
+
+        <loadData
+            file="config/liquibase/fake-data/preference.csv"
+            separator=";"
+            tableName="preference">
+            <column name="id" type="numeric"/>
+            <column name="destination_id" type="numeric"/>
+            <column name="pickup_id" type="numeric"/>
+            <column name="student_id" type="numeric"/>
+            <column name="time_slot_id" type="numeric"/>
+        </loadData>
+
+        <loadData
+            file="config/liquibase/fake-data/driving_lesson.csv"
+            separator=";"
+            tableName="driving_lesson">
+            <column name="id" type="numeric"/>
+            <column name="begin" type="date" />
+            <column name="end" type="date" />
+            <column name="lesson_type" type="string"/>
+            <column name="driver_id" type="numeric" />
+            <column name="destination_id" type="numeric" />
+            <column name="pickup_id" type="numeric" />
+            <column name="manual_lesson" type="boolean" />
+        </loadData>
+
+        <loadData
+            file="config/liquibase/fake-data/theory_lesson.csv"
+            separator=";"
+            tableName="theory_lesson">
+            <column name="id" type="numeric"/>
+            <column name="subject" type="string"/>
+            <column name="begin" type="date" />
+            <column name="end" type="date" />
+            <column name="teacher_id" type="numeric" />
+        </loadData>
+
+        <loadData
+            file="config/liquibase/fake-data/driving_lesson_optional_students.csv"
+            separator=";"
+            tableName="driving_lesson_optional_students">
+            <column name="driving_lesson_id" type="numeric"/>
+            <column name="optional_students_id" type="numeric"/>
+        </loadData>
+
+        <loadData
+            file="config/liquibase/fake-data/student_theory_lessons.csv"
+            separator=";"
+            tableName="student_theory_lessons">
+            <column name="student_id" type="numeric"/>
+            <column name="theory_lessons_id" type="numeric"/>
+        </loadData>
+
+        <loadData
+            file="config/liquibase/fake-data/time_slot_blocked_dates.csv"
+            separator=";"
+            tableName="time_slot_blocked_dates">
+            <column name="time_slot_id" type="numeric"/>
+            <column name="blocked_dates" type="date"/>
+        </loadData>
+
+        <loadData
+            file="config/liquibase/fake-data/time_slot_optional_categories.csv"
+            separator=";"
+            tableName="time_slot_optional_categories">
+            <column name="time_slot_id" type="numeric"/>
+            <column name="optional_categories" type="string"/>
+        </loadData>
+
+        <loadData
+            file="config/liquibase/fake-data/time_slot_preferred_categories.csv"
+            separator=";"
+            tableName="time_slot_preferred_categories">
+            <column name="time_slot_id" type="numeric"/>
+            <column name="preferred_categories" type="string"/>
+        </loadData>
+    </changeSet>
+
+</databaseChangeLog>

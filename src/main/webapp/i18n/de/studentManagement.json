@@ -1,0 +1,45 @@
+{
+    "studentManagement": {
+        "home": {
+            "title": "Fahrschüler",
+            "createLabel": "Neuen Fahrschüler erstellen",
+            "editLabel": "Fahrschüler bearbeiten",
+            "createOrEditLabel": "Fahrschüler erstellen oder bearbeiten"
+        },
+        "created": "Der Fahrschüler {{ param }} wurde erstellt",
+        "updated": "Ein Fahrschüler mit ID {{ param }} wurde geändert",
+        "deleted": "Ein Fahrschüler mit ID {{ param }} wurde gelöscht",
+        "delete": {
+            "question": "Sind Sie sicher, dass Sie den Fahrschüler {{ firstName }} {{ lastName }} löschen möchten?"
+        },
+        "detail": {
+            "title": "Fahrschüler",
+            "personalData": "Persönliche Daten",
+            "teachingData": "Ausbildungsbezogene Daten",
+            "teachingDiagram": "Ausbildungsdiagramm"
+        },
+        "login": "Login-Name",
+        "firstName": "Vorname",
+        "lastName": "Nachname",
+        "email": "Email",
+        "phoneNumber": "Telefonnummer",
+        "allowedLessons": "Maximale wöchentliche Fahrstunden",
+        "allowedLessonsDescription": "Wie viele Fahrstunden dürfen maximal gemacht werden pro Woche?",
+        "deactivated": "Account deaktiviert",
+        "deactivatedDescription": "Sie können den Account (z.B. nach bestandenem Führerschein) deaktivieren.",
+        "drivingLicense": "Führerschein bestanden",
+        "drivingLicenseDescription": "Hat der Fahrschüler den Führerschein bestanden?",
+        "category": "Führerschein-Klasse",
+        "categoryDefault": "- Führerschein-Klasse auswählen -",
+        "teacher": "Fahrlehrer",
+        "teacherDefault": "- Fahrlehrer auswählen -",
+        "activated": "Aktiv",
+        "deactivated": "Deaktiviert",
+        "profiles": "Profile",
+        "langKey": "Sprache",
+        "createdBy": "Erstellt von",
+        "createdDate": "Erstellt am",
+        "lastModifiedBy": "Bearbeitet von",
+        "lastModifiedDate": "Zuletzt bearbeitet"
+    }
+}

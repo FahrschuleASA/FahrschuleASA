@@ -1,0 +1,282 @@
+@keyframes car-moving {
+    0%{
+        -webkit-transform: translate(0px, 0);
+        transform: translate(0px, 0);
+        opacity: 0;
+    }
+    20% {
+        opacity: 1;
+    }
+    80% {
+        opacity: 1;
+    }
+    100% {
+        -webkit-transform: translate(400px, 0);
+        transform: translate(400px,0);
+        opacity: 0;
+    }
+}
+@-webkit-keyframes tyre-rotate {
+    from{-webkit-transform:rotate(-360deg);}
+    to{-webkit-transform:rotate(0deg);}
+}
+
+#car {
+    top: 170px;
+    position: absolute;
+    width: 80px;
+    left: 30%;
+}
+.bottom > div:nth-child(1) div{
+    width:80px;
+    height:15px;
+    background: white;
+    border: solid black;
+    position: absolute;
+    border-radius: 5px 10px 5px 5px;
+    -webkit-animation: car-moving 1s linear infinite;
+    -animation: car-moving 3s linear-infinite;
+}
+.top > div:nth-child(1) div {
+    position: absolute;
+    top:-18px;
+    left: 10px;
+    background: white;
+    border: solid black;
+    width: 50px;
+    height: 15px;
+    border-radius: 35px 35px 0 0;
+    -webkit-animation: car-moving 1s linear infinite;
+    -animation: car-moving 3s linear-infinite;
+}
+.window_front > div:nth-child(1) div {
+    background:black;
+    width:20px;
+    height:12px;
+    position: absolute;
+    border-radius:0 35px 0 0;
+    top: -12px;
+    left: 38px;
+    -webkit-animation: car-moving 1s linear infinite;
+    -animation: car-moving 3s linear-infinite;
+}
+
+.window_back > div:nth-child(1) div{
+    background:black;
+    width:20px;
+    height:12px;
+    position: absolute;
+    border-radius:35px 0 0 0;
+    top: -12px;
+    left: 16px;
+    -webkit-animation: car-moving 1s linear infinite;
+    -animation: car-moving 3s linear-infinite;
+}
+
+.f_tyres > div:nth-child(1) div{
+    width:15px;
+    height:15px;
+    background:white;
+    border-radius: 15px;
+    position: absolute;
+    border: solid black;
+    left: 54px;
+    bottom: -31px;
+    -webkit-animation: car-moving 1s linear infinite;
+    -animation: car-moving 3s linear-infinite;
+}
+.b_tyres > div:nth-child(1) div{
+    width:15px;
+    height:15px;
+    background:white;
+    border-radius: 15px;
+    position: absolute;
+    border: solid black;
+    left: 10px;
+    bottom: -31px;
+    -webkit-animation: car-moving 1s linear infinite;
+    -animation: car-moving 3s linear-infinite;
+}
+
+
+.f_tyres_after > div:nth-child(1) div{
+    content:"";
+    background: black;
+    width:8px;
+    height:8px;
+    border-radius:8px;
+    top: 16px;
+    left: 61px;
+    position: absolute;
+    -webkit-animation: car-moving 1s linear infinite;
+    -animation: car-moving 3s linear-infinite;
+}
+
+.b_tyres_after > div:nth-child(1) div {
+    content:"";
+    background: black;
+    width:8px;
+    height:8px;
+    border-radius:8px;
+    top: 16px;
+    left: 17px;
+    position: absolute;
+    -webkit-animation: car-moving 1s linear infinite;
+    -animation: car-moving 3s linear-infinite;
+}
+
+.light > div:nth-child(1) div{
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    border-radius: 0 15px 0 5px;
+    top: 0px;
+    background: #ffe400;
+    left: 72px;
+    border: solid black;
+    -webkit-animation: car-moving 1s linear infinite;
+    -animation: car-moving 3s linear-infinite;
+}
+
+#road {
+    top: 192px;
+    position:relative;
+    background: black;
+    width:30%;
+    height:2px;
+    left: 35%;
+}
+
+.bottom > div:nth-child(1) div:nth-child(1) {
+    -webkit-animation-delay: -0.67s;
+    animation-delay: -1s;
+}
+
+.bottom > div:nth-child(1) div:nth-child(2) {
+    -webkit-animation-delay: -0.33s;
+    animation-delay: -0.5s;
+}
+
+.bottom > div:nth-child(1) div:nth-child(3) {
+    -webkit-animation-delay: 0s;
+    animation-delay: 0s;
+}
+
+.top > div:nth-child(1) div:nth-child(1) {
+    -webkit-animation-delay: -0.67s;
+    animation-delay: -1s;
+}
+
+.top > div:nth-child(1) div:nth-child(2) {
+    -webkit-animation-delay: -0.33s;
+    animation-delay: -0.5s;
+}
+
+.top > div:nth-child(1) div:nth-child(3) {
+    -webkit-animation-delay: 0s;
+    animation-delay: 0s;
+}
+.window_front > div:nth-child(1) div:nth-child(1) {
+    -webkit-animation-delay: -0.67s;
+    animation-delay: -1s;
+}
+
+.window_front > div:nth-child(1) div:nth-child(2) {
+    -webkit-animation-delay: -0.33s;
+    animation-delay: -0.5s;
+}
+
+.window_front > div:nth-child(1) div:nth-child(3) {
+    -webkit-animation-delay: 0s;
+    animation-delay: 0s;
+}
+
+.window_back > div:nth-child(1) div:nth-child(1) {
+    -webkit-animation-delay: -0.67s;
+    animation-delay: -1s;
+}
+
+.window_back > div:nth-child(1) div:nth-child(2) {
+    -webkit-animation-delay: -0.33s;
+    animation-delay: -0.5s;
+}
+
+.window_back > div:nth-child(1) div:nth-child(3) {
+    -webkit-animation-delay: 0s;
+    animation-delay: 0s;
+}
+
+.f_tyres > div:nth-child(1) div:nth-child(1) {
+    -webkit-animation-delay: -0.67s;
+    animation-delay: -1s;
+}
+
+.f_tyres > div:nth-child(1) div:nth-child(2) {
+    -webkit-animation-delay: -0.33s;
+    animation-delay: -0.5s;
+}
+
+.f_tyres > div:nth-child(1) div:nth-child(3) {
+    -webkit-animation-delay: 0s;
+    animation-delay: 0s;
+}
+
+.b_tyres > div:nth-child(1) div:nth-child(1) {
+    -webkit-animation-delay: -0.67s;
+    animation-delay: -1s;
+}
+
+.b_tyres > div:nth-child(1) div:nth-child(2) {
+    -webkit-animation-delay: -0.33s;
+    animation-delay: -0.5s;
+}
+
+.b_tyres > div:nth-child(1) div:nth-child(3) {
+    -webkit-animation-delay: 0s;
+    animation-delay: 0s;
+}
+
+.light > div:nth-child(1) div:nth-child(1) {
+    -webkit-animation-delay: -0.67s;
+    animation-delay: -1s;
+}
+
+.light > div:nth-child(1) div:nth-child(2) {
+    -webkit-animation-delay: -0.33s;
+    animation-delay: -0.5s;
+}
+
+.light > div:nth-child(1) div:nth-child(3) {
+    -webkit-animation-delay: 0s;
+    animation-delay: 0s;
+}
+
+.b_tyres_after > div:nth-child(1) div:nth-child(1) {
+    -webkit-animation-delay: -0.67s;
+    animation-delay: -1s;
+}
+
+.b_tyres_after > div:nth-child(1) div:nth-child(2) {
+    -webkit-animation-delay: -0.33s;
+    animation-delay: -0.5s;
+}
+
+.b_tyres_after > div:nth-child(1) div:nth-child(3) {
+    -webkit-animation-delay: 0s;
+    animation-delay: 0s;
+}
+
+.f_tyres_after > div:nth-child(1) div:nth-child(1) {
+    -webkit-animation-delay: -0.67s;
+    animation-delay: -1s;
+}
+
+.f_tyres_after > div:nth-child(1) div:nth-child(2) {
+    -webkit-animation-delay: -0.33s;
+    animation-delay: -0.5s;
+}
+
+.f_tyres_after > div:nth-child(1) div:nth-child(3) {
+    -webkit-animation-delay: 0s;
+    animation-delay: 0s;
+}

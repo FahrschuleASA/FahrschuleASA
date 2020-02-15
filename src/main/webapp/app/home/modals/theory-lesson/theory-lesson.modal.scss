@@ -1,0 +1,21 @@
+.autocomplete-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+}
+
+.autocomplete-full-width {
+    width: 100%;
+}
+
+mat-action-list {
+    flex-grow: 1;
+    border: #ccc 1px solid;
+    overflow: auto;
+    max-height: 200px;
+}
+
+.mat-list-item.active {
+    text-decoration: line-through;
+    color: darkred;
+}

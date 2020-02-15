@@ -1,0 +1,25 @@
+{
+  "fahrschuleAsaApp": {
+    "teacher": {
+      "home": {
+        "title": "Fahrlehrer",
+        "createLabel": "Fahrlehrer erstellen",
+        "createOrEditLabel": "Fahrlehrer erstellen oder bearbeiten",
+        "notFound": "Keine Fahrlehrer gefunden"
+      },
+        "created": "Der Fahrlehrer {{ param }} wurde erstellt",
+        "updated": "Die Änderungen an Fahrlehrer {{ param }} wurden gespeichert",
+        "deleted": "Der Fahrlehrer {{ param }} wurde gelöscht",
+      "delete": {
+        "question": "Soll Fahrlehrer {{ id }} wirklich dauerhaft gelöscht werden?"
+      },
+      "detail": {
+        "title": "Fahrlehrer"
+      },
+      "changedTimeSlots": "Zeitslot erfolgreich verändert",
+      "student": "Fahrschüler",
+      "timeSlot": "Zeitslot",
+      "theoryLesson": "Theoriestunde"
+    }
+  }
+}

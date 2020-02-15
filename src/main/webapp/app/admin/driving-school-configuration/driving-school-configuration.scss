@@ -1,0 +1,34 @@
+.number-input{
+    max-width: 80px;
+    max-height: 25px;
+}
+
+.inline-label{
+    margin-right: 5px;
+}
+
+.inline-input{
+    margin-right: 15px;
+}
+
+label{
+    font-weight: bold;
+}
+
+.description{
+    margin-bottom: 20px;
+    font-size: 14pt;
+}
+
+.wrapper{
+    overflow-y: scroll;
+}
+
+.wrapper .selection{
+    width:150px;
+    border:1px solid #ccc
+}
+
+.unit{
+    margin-left: 10px;
+}

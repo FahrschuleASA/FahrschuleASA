@@ -1,0 +1,37 @@
+{
+    "fahrschuleAsaApp": {
+        "adminManagement": {
+            "home": {
+                "title": "Administratoren",
+                "createLabel": "Neuen Administrator erstellen",
+                "editLabel": "Administrator bearbeiten",
+                "createOrEditLabel": "Admin erstellen oder bearbeiten"
+            },
+            "created": "Der Administrator {{ param }} wurde erstellt",
+            "updated": "Die Änderungen an Administrator {{ param }} wurden gespeichert",
+            "deleted": "Der Administrator {{ param }} wurde gelöscht",
+            "delete": {
+                "question": "Sind Sie sicher, dass Sie den Administrator {{ firstName }} {{ lastName }} löschen möchten?"
+            },
+            "detail": {
+                "title": "Administrator"
+            },
+            "login": "Login-Name",
+            "firstName": "Vorname",
+            "lastName": "Nachname",
+            "email": "Email",
+            "phoneNumber": "Telefonnummer",
+            "schoolOwner": "Fahrschul-Besitzer",
+            "schoolOwnerDescription": "Ist die Person ein Besitzer der Fahrschule?",
+            "categories": "Führerschein-Klassen",
+            "activated": "Aktiv",
+            "deactivated": "Deaktiviert",
+            "profiles": "Profile",
+            "langKey": "Sprache",
+            "createdBy": "Erstellt von",
+            "createdDate": "Erstellt am",
+            "lastModifiedBy": "Bearbeitet von",
+            "lastModifiedDate": "Zuletzt bearbeitet"
+        }
+    }
+}

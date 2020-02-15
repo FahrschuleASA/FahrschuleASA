@@ -1,0 +1,30 @@
+<div class="modal-header">
+    <h4 class="modal-title">Freie Fahrstunde<br>
+        <p style="font-size: small">{{event.start.toLocaleDateString() + ' ' + event.start.toTimeString()}}</p>
+    </h4>
+    <button aria-label="Close" data-dismiss="modal" class="close" type="button" (click)="cancel()">
+        <span aria-hidden="true">x</span>
+    </button>
+</div>
+
+<div class="modal-body" *ngIf="getStudent()">
+    <div class="col-md-8">
+        <form class="form" role="form" [formGroup]="eventForm">
+            <div class="form-group">
+                <button class="btn btn-primary" (click)="openLocationModal()" [disabled]="pickupIsSet || done">Abholort setzen</button>
+                <button class="btn btn-primary" (click)="openLocationModal()" [disabled]="!pickupIsSet || done">Absetz setzen</button>
+            </div>
+        </form>
+        <p></p>
+    </div>
+</div>
+
+<div class="modal-footer">
+    <div class="row">
+        <div class="col-md-4">
+            <button type="button" class="btn btn-primary" (click)="updateEvent()" [disabled]="!done">
+                Speichern
+            </button>
+        </div>
+    </div>
+</div>

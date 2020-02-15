@@ -1,0 +1,29 @@
+{
+  "fahrschuleAsaApp": {
+    "timeSlot": {
+      "home": {
+        "title": "Zeitslots",
+        "createLabel": "Zeitslot erstellen",
+        "createOrEditLabel": "Zeitslot erstellen oder bearbeiten",
+        "notFound": "Keine Zeitslots gefunden"
+      },
+      "created": "Zeitslot erstellt mit ID {{ param }}",
+      "updated": "Zeitslot aktualisiert mit ID {{ param }}",
+      "deleted": "Zeitslot gelöscht mit ID {{ param }}",
+      "delete": {
+        "question": "Soll Zeitslot {{ id }} wirklich dauerhaft gelöscht werden?"
+      },
+      "notify": {
+          "changed": "Die Fahrschüler wurden über die Änderungen benachrichtigt"
+      },
+      "detail": {
+        "title": "Zeitslot"
+      },
+      "begin": "Beginn",
+      "end": "Ende",
+      "day": "Tag",
+      "night": "Nacht",
+      "teacher": "Fahrlehrer"
+    }
+  }
+}

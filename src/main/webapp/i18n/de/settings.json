@@ -1,0 +1,36 @@
+{
+    "settings": {
+        "title": "Einstellungen für Benutzer [<strong>{{username}}</strong>]",
+        "form": {
+            "language": "Sprache",
+            "active": "Aktiv",
+            "inactiveDuration": "Dauer der Inaktivität",
+            "wantedLessons": "Gewünschte wöchentliche Fahrstunden",
+            "readyForTheory": "Bereit zur Theorieprüfung",
+            "readyForTheoryFlag": "Bereit",
+            "notifications": "Benachrichtigungen",
+            "notificationsCancelDrivingLesson": "Benachrichtigungen über stornierte Fahrstunde <b>(nicht deaktivierbar)</b>",
+            "notificationsBookedDrivingLesson": "Benachrichtigungen über erfolgreich gebuchte Fahrstunde <b>(nicht deaktivierbar)</b>",
+            "notificationsTimeSlotChanged": "Benachrichtigungen über Änderungen an den Zeitslots <b>(nicht deaktivierbar)</b>",
+            "notificationsCategoryChanged": "Benachrichtigungen über Änderungen an der Kategorie eines präferierten Zeitslots <b>(nicht deaktivierbar)</b>",
+            "notificationsBookableDrivingLesson": "Benachrichtigungen über buchbare Fahrstunde",
+            "button": "Speichern"
+        },
+        "description": {
+            "language": "In welcher Sprache möchtest du das System angezeigt bekommen?",
+            "active": "Falls du im Moment keine Fahrstunden haben möchtest (z.B. falls du im Urlaub bist oder ähnliches), setze deinen Status auf nicht aktiv.",
+            "activeTeacher": "Falls du im Moment keine Fahrstunden machst (z.B. falls du im Urlaub bist oder ähnliches), setze deinen Status auf nicht aktiv.",
+            "inactiveDuration": "Wieviele Tage wirst du inaktiv sein?",
+            "inactiveDuration0": "0 bedeutet, dass du beliebig lange inaktiv bist (bis du dich wieder aktiv setzt).",
+            "wantedLessons": "Wieviele Fahrstunden möchtest du wöchentlich machen? (Max.: {{maxLessons}})",
+            "readyForTheory": "Bist du bereit für die Theorieprüfung?"
+        },
+        "messages": {
+            "error": {
+                "fail": "<strong>Es ist ein Fehler aufgetreten!</strong> Die Einstellungen konnten nicht gespeichert werden.",
+                "emailexists": "<strong>Email wird bereits verwendet!</strong> Bitte wählen Sie eine andere aus."
+            },
+            "success": "<strong>Einstellungen wurden gespeichert!</strong>"
+        }
+    }
+}

@@ -1,0 +1,364 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="myUserLabel" jhiTranslate="studentManagement.home.editLabel">
+                Create or edit a User
+            </h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <button (click)="togglePersonalData()" type="button">
+                <h3 jhiTranslate="studentManagement.detail.personalData">
+                    Personal Data
+                </h3>
+            </button>
+            <div *ngIf="personalDataShow">
+                <div class="form-group">
+                    <label jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" name="id" [value]="student.id" readonly>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="studentManagement.login">Login</label>
+                    <input type="text" class="form-control" name="login" [value]="student.user.login" readonly>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="studentManagement.firstName">First Name</label>
+                    <input type="text" class="form-control" name="firstName"
+                           formControlName="firstName">
+
+                    <div
+                        *ngIf="editForm.get('firstName').invalid && (editForm.get('firstName').dirty || editForm.get('firstName').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('firstName').errors.maxlength"
+                               jhiTranslate="entity.validation.maxlength"
+                               [translateValues]="{max: 50}">
+                            This field cannot be longer than 50 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label jhiTranslate="studentManagement.lastName">Last Name</label>
+                    <input type="text" class="form-control" name="lastName"
+                           formControlName="lastName">
+
+                    <div
+                        *ngIf="editForm.get('lastName').invalid && (editForm.get('lastName').dirty || editForm.get('lastName').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('lastName').errors.maxlength"
+                               jhiTranslate="entity.validation.maxlength"
+                               [translateValues]="{max: 50}">
+                            This field cannot be longer than 50 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="birthDate" jhiTranslate="personalData.form.birthDate">Birthdate</label>
+                    <input type="text" class="form-control" id="birthDate" name="birthDate"
+                           placeholder="01.01.2000"
+                           formControlName="birthDate">
+                    <div
+                        *ngIf="editForm.get('birthDate').invalid && (editForm.get('birthDate').dirty || editForm.get('birthDate').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('birthDate').errors.required"
+                               jhiTranslate="personalData.messages.validate.birthDate.required">
+                            Your birthdate is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('birthDate').errors.pattern"
+                               jhiTranslate="personalData.messages.validate.birthDate.pattern">
+                            Your birthdate should match the form: 'dd.mm.yyyy'.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="email" jhiTranslate="global.form.email.label">Email</label>
+                    <input type="email" class="form-control" id="email" name="email"
+                           formControlName="email">
+                    <div
+                        *ngIf="editForm.get('email').invalid && (editForm.get('email').dirty || editForm.get('email').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('email').errors.required"
+                               jhiTranslate="global.messages.validate.email.required">
+                            Your email is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('email').errors.email"
+                               jhiTranslate="global.messages.validate.email.invalid">
+                            Your email is invalid.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('email').errors.minlength"
+                               jhiTranslate="global.messages.validate.email.minlength">
+                            Your email is required to be at least 5 characters.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('email').errors.maxlength"
+                               jhiTranslate="global.messages.validate.email.maxlength">
+                            Your email cannot be longer than 100 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="phoneNumber" jhiTranslate="personalData.form.phoneNumber">Phone number</label>
+                    <input type="text" class="form-control" id="phoneNumber" name="phoneNumber"
+                           placeholder="0123456789"
+                           formControlName="phoneNumber">
+                    <div
+                        *ngIf="editForm.get('phoneNumber').invalid && (editForm.get('phoneNumber').dirty || editForm.get('phoneNumber').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('phoneNumber').errors.required"
+                               jhiTranslate="personalData.messages.validate.phoneNumber.required">
+                            Your phone number is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('phoneNumber').errors.pattern"
+                               jhiTranslate="personalData.messages.validate.phoneNumber.pattern">
+                            Your phone number should match the form: '0123456789'.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('phoneNumber').errors.maxlength"
+                               jhiTranslate="personalData.messages.validate.phoneNumber.maxlength">
+                            Your phone number cannot be longer than 20 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="description" jhiTranslate="personalData.form.addressNote">
+                    We use Nominatim (https://nominatim.openstreetmap.org) to transform the address data to coordinates.
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label class="form-control-label" for="street" jhiTranslate="personalData.form.street">Street</label>
+                            <input type="text" class="form-control" id="street" name="street"
+                                   placeholder="Musterstraße"
+                                   formControlName="street">
+                            <div
+                                *ngIf="editForm.get('street').invalid && (editForm.get('street').dirty || editForm.get('street').touched)">
+                                <small class="form-text text-danger"
+                                       *ngIf="editForm.get('street').errors.required"
+                                       jhiTranslate="personalData.messages.validate.street.required">
+                                    Your street is required.
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <label class="form-control-label" for="houseNumber" jhiTranslate="personalData.form.houseNumber">House number</label>
+                        <input type="text" class="form-control" id="houseNumber" name="houseNumber"
+                               placeholder="123"
+                               formControlName="houseNumber">
+                        <div
+                            *ngIf="editForm.get('houseNumber').invalid && (editForm.get('houseNumber').dirty || editForm.get('houseNumber').touched)">
+                            <small class="form-text text-danger"
+                                   *ngIf="editForm.get('houseNumber').errors.required"
+                                   jhiTranslate="personalData.messages.validate.houseNumber.required">
+                                Your house number is required.
+                            </small>
+                            <small class="form-text text-danger"
+                                   *ngIf="editForm.get('houseNumber').errors.pattern"
+                                   jhiTranslate="personalData.messages.validate.houseNumber.pattern">
+                                Your house number should only include digits.
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label class="form-control-label" for="postal" jhiTranslate="personalData.form.postal">Postal Code</label>
+                            <input type="text" class="form-control" id="postal" name="postal"
+                                   placeholder="12345"
+                                   formControlName="postal">
+                            <div
+                                *ngIf="editForm.get('postal').invalid && (editForm.get('postal').dirty || editForm.get('postal').touched)">
+                                <small class="form-text text-danger"
+                                       *ngIf="editForm.get('postal').errors.required"
+                                       jhiTranslate="personalData.messages.validate.postal.required">
+                                    Your postal is required.
+                                </small>
+                                <small class="form-text text-danger"
+                                       *ngIf="editForm.get('postal').errors.pattern"
+                                       jhiTranslate="personalData.messages.validate.postal.pattern">
+                                    Your postal needs to match the format: 12345.
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <label class="form-control-label" for="town" jhiTranslate="personalData.form.town">Town</label>
+                        <input type="text" class="form-control" id="town" name="town"
+                               placeholder="Musterdorf"
+                               formControlName="town">
+                        <div
+                            *ngIf="editForm.get('town').invalid && (editForm.get('town').dirty || editForm.get('town').touched)">
+                            <small class="form-text text-danger"
+                                   *ngIf="editForm.get('town').errors.required"
+                                   jhiTranslate="personalData.messages.validate.town.required">
+                                Your town is required.
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label class="form-control-label" for="country" jhiTranslate="personalData.form.country">Country</label>
+                            <input type="text" class="form-control" id="country" name="country"
+                                   formControlName="country">
+                            <div
+                                *ngIf="editForm.get('country').invalid && (editForm.get('country').dirty || editForm.get('country').touched)">
+                                <small class="form-text text-danger"
+                                       *ngIf="editForm.get('country').errors.required"
+                                       jhiTranslate="personalData.messages.validate.country.required">
+                                    Your country is required.
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <label class="form-control-label" for="additional" jhiTranslate="personalData.form.additional">Additional</label>
+                        <input type="text" class="form-control" id="additional" name="additional"
+                               formControlName="additional">
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <button (click)="toggleTeachingData()" type="button">
+                <h3 jhiTranslate="studentManagement.detail.teachingData">
+                    Teaching Data
+                </h3>
+            </button>
+            <div *ngIf="teachingDataShow">
+
+                <div class="form-group">
+                    <label class="form-control-label" for="teacher" jhiTranslate="studentManagement.teacher">Teacher</label>
+                    <select class="form-control col-md-4" id="teacher" name="teacher" formControlName="teacher">
+                        <option value="null" selected disabled jhiTranslate="studentManagement.teacherDefault">- Choose teacher -</option>
+                        <option *ngFor="let teacher of availableTeachers" value="{{teacher.id}}">{{teacher.user.firstName}} {{teacher.user.lastName}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="category" jhiTranslate="studentManagement.category">Driving Category</label>
+                    <select class="form-control col-md-4" id="category" name="category" formControlName="category">
+                        <option value="null" selected disabled jhiTranslate="studentManagement.categoryDefault">- Choose category -</option>
+                        <option *ngFor="let category of availableCategories" value="{{category}}">{{category}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <div class="description" jhiTranslate="studentManagement.allowedLessonsDescription">
+                        What is the maximum of driving lessons per week?
+                    </div>
+                    <label class="form-control-label" for="allowedLessons" jhiTranslate="studentManagement.allowedLessons">Allowed Lessons</label>
+                    <div class="form-inline">
+                        <input type="number" min="0" max="100" class="form-control number-input inline-label" id="allowedLessons" name="allowedLessons"
+                               formControlName="allowedLessons"> h
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="description" jhiTranslate="studentManagement.drivingLicenseDescription">
+                        Did the student pass the driving license?
+                    </div>
+                    <div class="custom-control custom-switch">
+                        <input type="checkbox" class="custom-control-input" value="1" id="drivingLicense" name="drivingLicense">
+                        <label class="custom-control-label" for="drivingLicense" jhiTranslate="studentManagement.drivingLicense">Has driving licens</label>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <button (click)="toggleTeachingDiagram()" type="button">
+                <h3 jhiTranslate="studentManagement.detail.teachingDiagram">
+                    Teaching Diagram
+                </h3>
+            </button>
+            <div *ngIf="teachingDiagramShow">
+                <div jhiTranslate="fahrschuleAsaApp.teachingData.percentage" class="bolder">Percentage</div>
+                <div class="row">
+                    <div class="form-group col">
+                        <label class="form-control-label" for="basic" jhiTranslate="fahrschuleAsaApp.teachingData.basic">Basic</label>
+                        <div class="form-inline">
+                            <input type="number" min="0" max="100" class="form-control number-input inline-label" id="basic" name="basic"
+                                   formControlName="basic"> %
+                        </div>
+                    </div>
+                    <div class="form-group col">
+                        <label class="form-control-label" for="overland" jhiTranslate="fahrschuleAsaApp.teachingData.overland">Overland</label>
+                        <div class="form-inline">
+                            <input type="number" min="0" max="100" class="form-control number-input inline-label" id="overland" name="overland"
+                                   formControlName="overland"> %
+                        </div>
+                    </div>
+                    <div class="form-group col">
+                        <label class="form-control-label" for="autobahn" jhiTranslate="fahrschuleAsaApp.teachingData.autobahn">Autobahn</label>
+                        <div class="form-inline">
+                            <input type="number" min="0" max="100" class="form-control number-input inline-label" id="autobahn" name="autobahn"
+                                   formControlName="autobahn"> %
+                        </div>
+                    </div>
+                    <div class="form-group col">
+                        <label class="form-control-label" for="night" jhiTranslate="fahrschuleAsaApp.teachingData.night">Night</label>
+                        <div class="form-inline">
+                            <input type="number" min="0" max="100" class="form-control number-input inline-label" id="night" name="night"
+                                   formControlName="night"> %
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-3">
+                        <label class="form-control-label" for="advanced" jhiTranslate="fahrschuleAsaApp.teachingData.advanced">Advanced</label>
+                        <div class="form-inline">
+                            <input type="number" min="0" max="100" class="form-control number-input inline-label" id="advanced" name="advanced"
+                                   formControlName="advanced"> %
+                        </div>
+                    </div>
+                    <div class="form-group col-3">
+                        <label class="form-control-label" for="performance" jhiTranslate="fahrschuleAsaApp.teachingData.performance">Performance</label>
+                        <div class="form-inline">
+                            <input type="number" min="0" max="100" class="form-control number-input inline-label" id="performance" name="performance"
+                                   formControlName="performance"> %
+                        </div>
+                    </div>
+                    <div class="form-group col-3">
+                        <label class="form-control-label" for="independence" jhiTranslate="fahrschuleAsaApp.teachingData.independence">Independence</label>
+                        <div class="form-inline">
+                            <input type="number" min="0" max="100" class="form-control number-input inline-label" id="independence" name="independence"
+                                   formControlName="independence"> %
+                        </div>
+                    </div>
+                </div>
+                <dt><span jhiTranslate="fahrschuleAsaApp.teachingData.basicHours">Basic driving lessons</span></dt>
+                <dd>
+                    <span class="progress-value">
+                        {{teachingDiagram.basicCount}} Stunde(n)
+                    </span>
+                </dd>
+                <dt><span jhiTranslate="fahrschuleAsaApp.teachingData.overlandHours">Overland driving lessons</span></dt>
+                <dd>
+                    <span class="progress-value">
+                        {{teachingDiagram.overlandCount}} Stunde(n)
+                    </span>
+                </dd>
+                <dt><span jhiTranslate="fahrschuleAsaApp.teachingData.autobahnHours">Autobahn driving lessons</span></dt>
+                <dd>
+                    <span class="progress-value">
+                        {{teachingDiagram.autobahnCount}} Stunde(n)
+                    </span>
+                </dd>
+                <dt><span jhiTranslate="fahrschuleAsaApp.teachingData.nightHours">Night driving lessons</span></dt>
+                <dd>
+                    <span class="progress-value">
+                        {{teachingDiagram.nightCount}} Stunde(n)
+                    </span>
+                </dd>
+            </div>
+            <hr>
+            <div>
+                <button type="button" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span
+                    jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

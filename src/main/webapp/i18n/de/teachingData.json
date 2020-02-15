@@ -1,0 +1,48 @@
+{
+  "fahrschuleAsaApp": {
+    "teachingData": {
+        "teachingDiagram": "Ausbildungsdiagrammkarte",
+        "teacherContact": "Kontaktdaten Fahrlehrer",
+      "home": {
+        "title": "Ausbildungsdiagrammkarte",
+        "createLabel": "Ausbildungsdiagrammkarte erstellen",
+        "createOrEditLabel": "Ausbildungsdiagrammkarte erstellen oder bearbeiten",
+        "notFound": "Keine Ausbildungsdiagrammkarte gefunden"
+      },
+      "created": "Ausbildungsdiagrammkarte erstellt mit ID {{ param }}",
+      "updated": "Ausbildungsdiagrammkarte aktualisiert mit ID {{ param }}",
+      "deleted": "Ausbildungsdiagrammkarte gelöscht mit ID {{ param }}",
+      "delete": {
+        "question": "Soll die Ausbildungsdiagrammkarte {{ id }} wirklich dauerhaft gelöscht werden?"
+      },
+      "detail": {
+        "title": "Ausbildungsdiagrammkarte"
+      },
+        "teacher": {
+            "name": "Name",
+            "phoneNumber": "Telefonnummer",
+            "mail": "Mail"
+        },
+        "drivingLessonsCount": "Fahrstunden",
+        "missedDrivingLessonsCount": "Verpasste Fahrstunden",
+        "lateMissedDrivingLessonsCount": "Spät abgesagte Fahrstunden",
+        "theoryLessonsCount": "Theoriestunden",
+        "drivingCategory": "Führerschein-Klasse",
+        "allowedLessons": "Maximale wöchentliche Fahrstunden",
+        "percentage": "Prozentual",
+        "total": "Total (Absolvierte Fahrstunden)",
+      "basic": "Basis",
+        "basicHours": "Basis-Fahrstunden",
+      "advanced": "Fortgeschritten",
+      "performance": "Leistung",
+      "independence": "Eigenständigkeit",
+      "overland": "Überland",
+        "overlandHours": "Überland-Fahrstunden",
+      "autobahn": "Autobahn",
+        "autobahnHours": "Autobahn-Fahrstunden",
+      "night": "Nacht",
+        "nightHours": "Nacht-Fahrstunden",
+      "hours": "{{value}} Stunde(n)"
+    }
+  }
+}

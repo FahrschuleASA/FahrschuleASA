@@ -1,0 +1,24 @@
+{
+    "error": {
+        "title": "Fehlerseite!",
+        "http": {
+            "400": "Ungültige Anfrage.",
+            "403": "Sie haben nicht die nötigen Berechtigungen um diese Seite anzuzeigen.",
+            "404": "Die Seite existiert nicht.",
+            "405": "Die verwendete Anfrage-Methode ist für diese URL nicht erlaubt.",
+            "500": "Interner Serverfehler."
+        },
+        "concurrencyFailure": "Ein anderer Benutzer hat diese Daten zeitgleich mit Ihnen geändert. Ihre Änderungen wurden abgelehnt.",
+        "validation": "Validierungsfehler auf dem Server.",
+        "admindeleteself": "Ein Administrator kann sich nicht selbst löschen. (Don't do it. It's not worth it!)",
+        "pastcancel": "Es kann keine bereits vergangene Fahrstunde abgesagt werden!",
+        "pastbook": "Es kann keine bereits vergangene Fahrstunde gebucht werden!",
+        "notbookable": "Es kann keine nicht buchbare Fahrstunde gebucht werden!",
+        "alreadybooked": "Diese Fahrstunde wurde bereits von einem anderen Fahrschüler gebucht",
+        "wrongteacher": "Diese Fahrstunde gehört zu einem anderen Fahrlehrer",
+        "teachermismatch": "Der Fahrlehrer des Fahrschülers muss mit dem Fahrlehrer der Fahrstunde übereinstimmen",
+        "badbeginend": "Eine Fahrstunde oder ein Zeitslot kann nicht vor 6 Uhr beginnen und nach 6 Uhr enden",
+        "badduration": "Eine Fahrstunde oder ein Zeitslot muss zwischen 45 und 180 Minuten dauern",
+        "badconditions": "Die Fahrstunde kann nicht angelegt/gebucht werden, da dies gesetzliche Bestimmungen verletzen würde"
+    }
+}

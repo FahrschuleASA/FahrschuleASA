@@ -1,0 +1,76 @@
+<div class="modal-header">
+    <h4 class="modal-title">Fahrstunde<br>
+        <p style="font-size: small">{{eventStartString}} - {{eventEndString}}</p>
+    </h4>
+    <button aria-label="Close" data-dismiss="modal" class="close" type="button" (click)="cancel()">
+        <span aria-hidden="true">x</span>
+    </button>
+</div>
+
+<div class="modal-body">
+    <form class="form" role="form" [formGroup]="eventForm">
+
+        <form class="autocomplete-form" *ngIf="_isAdminView && _fresh">
+            <mat-form-field class="autocomplete-full-width">
+                <input type="text" placeholder="Lehrer festlegen" id="teacherInput" matInput
+                       [formControl]="autocompleteControlTeacher" [matAutocomplete]="auto">
+                <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selectTeacher($event.option.value)">
+                    <mat-option *ngFor="let option of filteredTeacherOptions | async" [value]="option">
+                        {{option.user.firstName + ' ' + option.user.lastName}}
+                    </mat-option>
+                </mat-autocomplete>
+            </mat-form-field>
+        </form>
+
+        <mat-form-field *ngIf="_fresh">
+            <mat-label id="category">Führerscheinklasse</mat-label>
+            <mat-select [(value)]="drivingCategoryString">
+                <mat-option *ngFor="let option of drivingCategoryOptions" [value]="option">
+                    {{option.toString()}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Typ der Fahrstunde</mat-label>
+            <mat-select [(value)]="drivingLessonTypeString">
+                <mat-option *ngFor="let option of drivingLessonTypeOptions" [value]="option">
+                    {{option.toString()}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-checkbox [(ngModel)]="assignedLesson" [ngModelOptions]="{standalone: true}"  name="free-driving-lesson">Schüler zuweisen</mat-checkbox>
+
+        <div *ngIf="assignedLesson && _fresh">
+            <form class="autocomplete-form" *ngIf="_isAdminView || _isTeacherView">
+                <mat-form-field class="autocomplete-full-width">
+                    <input type="text" placeholder="Schüler festlegen" id="studentInput" matInput
+                           [formControl]="autocompleteControlStudent" [matAutocomplete]="auto">
+                    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selectStudent($event.option.value)">
+                        <mat-option *ngFor="let option of filteredStudentOptions | async" [value]="option">
+                            {{option.firstname + ' ' + option.lastname}}
+                        </mat-option>
+                    </mat-autocomplete>
+                </mat-form-field>
+            </form>
+        </div>
+
+        <div *ngIf="!_isTeacherView && !_isAdminView">
+            <button class="btn btn-primary" (click)="openLocationModal()" [disabled]="pickupIsSet || done">Abholort setzen</button>
+            <button class="btn btn-primary" (click)="openLocationModal()" [disabled]="!pickupIsSet || done">Absetzort setzen</button>
+        </div>
+    </form>
+</div>
+
+<div class="modal-footer">
+    <button type="button" class="btn btn-primary" (click)="updateDrivingLesson()" *ngIf="!_fresh">
+        Speichern
+    </button>
+    <button type="button" class="btn btn-primary" (click)="createDrivingLesson()" *ngIf="_fresh">
+        Erstellen
+    </button>
+    <button type="button" class="btn btn-danger" (click)="deleteEvent()">
+        Löschen
+    </button>
+</div>

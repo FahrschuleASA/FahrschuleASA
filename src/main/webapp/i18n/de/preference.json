@@ -1,0 +1,25 @@
+{
+  "fahrschuleAsaApp": {
+    "preference": {
+      "home": {
+        "title": "Präferenzen",
+        "createLabel": "Präferenz erstellen",
+        "createOrEditLabel": "Präferenz erstellen oder bearbeiten",
+        "notFound": "Keine Präferenz gefunden"
+      },
+      "created": "Präferenz erstellt mit ID {{ param }}",
+      "updated": "Präferenz aktualisiert mit ID {{ param }}",
+      "deleted": "Präferenz gelöscht mit ID {{ param }}",
+      "delete": {
+        "question": "Soll Präferenz {{ id }} wirklich dauerhaft gelöscht werden?"
+      },
+      "detail": {
+        "title": "Präferenz"
+      },
+      "pickup": "Treffpunkt",
+      "destination": "Absetzpunkt",
+      "timeSlot": "Zeitslot",
+      "student": "Student"
+    }
+  }
+}

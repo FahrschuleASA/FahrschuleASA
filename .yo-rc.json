@@ -1,0 +1,42 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "org.projekt17.fahrschuleasa",
+      "nativeLanguage": "de"
+    },
+    "jhipsterVersion": "6.4.1",
+    "applicationType": "monolith",
+    "baseName": "FahrschuleASA",
+    "packageName": "org.projekt17.fahrschuleasa",
+    "packageFolder": "org/projekt17/fahrschuleasa",
+    "serverPort": "8080",
+    "authenticationType": "jwt",
+    "cacheProvider": "ehcache",
+    "enableHibernateCache": true,
+    "websocket": "spring-websocket",
+    "databaseType": "sql",
+    "devDatabaseType": "h2Memory",
+    "prodDatabaseType": "mariadb",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": false,
+    "buildTool": "gradle",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "YzViYWZhMmVmMzc4MGQ5MzU0MjcwNmY5NWMzMDYxYWIxYzEzMGRjZjY0Y2FmNjMwMzg3NDJiYWI0YmFjYTliNmY4MWEwMjZiMzJiM2FhNjA3NjUzNzIwZGNiOTJlZTQwMzQ1NTdhYTk2NDYyNjdkNGViZDU2ZWRmNWQ4MDIwZDE=",
+    "embeddableLaunchScript": false,
+    "useSass": true,
+    "clientPackageManager": "npm",
+    "clientFramework": "angularX",
+    "clientTheme": "litera",
+    "clientThemeVariant": "primary",
+    "testFrameworks": ["protractor"],
+    "jhiPrefix": "jhi",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": [],
+    "enableTranslation": true,
+    "nativeLanguage": "de",
+    "languages": ["de"],
+    "blueprints": []
+  }
+}

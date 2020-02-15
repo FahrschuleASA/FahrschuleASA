@@ -1,0 +1,96 @@
+<div>
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <h2 jhiTranslate="drivingSchoolConfiguration.title">Driving School Configuration
+            </h2>
+
+            <div class="alert alert-success" *ngIf="success" jhiTranslate="drivingSchoolConfiguration.messages.success">
+                <strong>Settings saved!</strong>
+            </div>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <form name="form" role="form" (ngSubmit)="save()" [formGroup]="drivingSchoolConfigurationForm" novalidate>
+                <div class="form-group">
+                    <div class="description" jhiTranslate="drivingSchoolConfiguration.initialLessonsDescription">
+                        How many theoretical lessons does a student need (before the first driving lesson)?
+                    </div>
+                    <label class="form-control-label" for="initialLessons" jhiTranslate="drivingSchoolConfiguration.form.initialLessons">Initial lessons</label>
+                    <div class="form-inline">
+                        <input type="number" min="0" max="20" class="form-control number-input" id="initialLessons" name="initialLessons"
+                           formControlName="initialLessons"><span class="unit">h</span>
+                    </div>
+                </div>
+                <hr>
+                <div class="form-group">
+                    <div class="description" jhiTranslate="drivingSchoolConfiguration.planningDescription">
+                        When should the planning algorithm run?
+                    </div>
+                    <label class="form-control-label inline-label" for="planningWeekday" jhiTranslate="drivingSchoolConfiguration.form.planningWeekday">Weekday</label>
+                    <select class="inline-input" id="planningWeekday" name="planningWeekday" formControlName="planningWeekday">
+                        <option value="1" jhiTranslate="global.weekdays.monday">Monday</option>
+                        <option value="2" jhiTranslate="global.weekdays.tuesday">Tuesday</option>
+                        <option value="3" jhiTranslate="global.weekdays.wednesday">Wednesday</option>
+                        <option value="4" jhiTranslate="global.weekdays.thursday">Thursday</option>
+                        <option  value="5" jhiTranslate="global.weekdays.friday">Friday</option>
+                        <option value="6" jhiTranslate="global.weekdays.saturday">Saturday</option>
+                        <option value="0" jhiTranslate="global.weekdays.sunday">Sunday</option>
+                    </select>
+                    <label class="form-control-label inline-label" for="planningHour" jhiTranslate="drivingSchoolConfiguration.form.planningHour">Hour</label>
+                    <select class="inline-input" id="planningHour" name="planningHour" formControlName="planningHour">
+                        <option *ngFor="let hour of planningHourOptions" value="{{hour}}">{{hour}}</option>
+                    </select>
+                    <label class="form-control-label inline-label" for="planningMinute" jhiTranslate="drivingSchoolConfiguration.form.planningMinute">Minute</label>
+                    <select class="inline-input" id="planningMinute" name="planningMinute" formControlName="planningMinute">
+                        <option *ngFor="let minute of planningMinuteOptions" value="{{minute}}">{{minute}}</option>
+                    </select>
+                </div>
+                <hr>
+                <div class="form-group">
+                    <div class="description" jhiTranslate="drivingSchoolConfiguration.maxInactiveDescription">
+                        How many days are students allowed to be inactive? (0 means that students may set any value)
+                    </div>
+                    <label class="form-control-label" for="maxInactive" jhiTranslate="drivingSchoolConfiguration.form.maxInactive">Maximum inactive days</label>
+                    <div class="form-inline">
+                        <input type="number" min="0" max="3000" class="form-control number-input" id="maxInactive" name="maxInactive"
+                           formControlName="maxInactive"><span class="unit" jhiTranslate="drivingSchoolConfiguration.form.days">Days</span>
+                    </div>
+                </div>
+                <hr>
+                <div class="form-group">
+                    <div class="description" jhiTranslate="drivingSchoolConfiguration.availableCategoriesDescription">
+                        Which driving licence classes are available?
+                    </div>
+                    <label class="form-control-label" for="availableCategories"  jhiTranslate="drivingSchoolConfiguration.form.availableCategories">Available driving licence classes</label>
+                    <div class="wrapper">
+                        <select class="form-control selection" id="availableCategories" name="availableCategories" formControlName="availableCategories" multiple>
+                            <option *ngFor="let category of allCategories" [value]="category">{{category}}</option>
+                        </select>
+                    </div>
+                </div>
+                <hr>
+                <div class="form-group">
+                    <div class="description" jhiTranslate="drivingSchoolConfiguration.deadlineMissedLessonDescription">
+                        When should driving lessons be cancelled at the latest?
+                    </div>
+                    <label class="form-control-label" for="deadlineMissedLesson" jhiTranslate="drivingSchoolConfiguration.form.deadlineMissedLesson">Deadline to cancel lessons</label>
+                    <div class="form-inline">
+                        <input type="number" min="0" max="100" class="form-control number-input" id="deadlineMissedLesson" name="deadlineMissedLesson"
+                               formControlName="deadlineMissedLesson"><span class="unit">h</span>
+                    </div>
+                </div>
+                <hr>
+                <div class="form-group">
+                    <div class="description" jhiTranslate="drivingSchoolConfiguration.emailSignatureDescription">
+                        What should the signature of the e-mails look like?
+                    </div>
+                    <label class="form-control-label" for="emailSignature" jhiTranslate="drivingSchoolConfiguration.form.emailSignature">E-Mail signature</label>
+                    <textarea class="form-control" id="emailSignature" name="emailSignature" cols="35" rows="4" formControlName="emailSignature"></textarea>
+                </div>
+                <button type="submit" [disabled]="drivingSchoolConfigurationForm.invalid" class="btn btn-primary"
+                        jhiTranslate="drivingSchoolConfiguration.form.button">Save
+                </button>
+            </form>
+        </div>
+    </div>
+</div>

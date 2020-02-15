@@ -1,0 +1,59 @@
+<div class="calendar-sidebar" *ngIf="_shown" [@slideInOut]>
+    <div class="header">
+        <div class="header-title">
+            <h2>{{this.datePipe.transform(_sidebarEvent.start, "dd.MM.yyyy HH:mm")}}</h2>
+            <h1>{{_sidebarEvent.title}}</h1>
+            <h4 *ngIf="_isDrivingLesson">{{_driver.firstname}} {{_driver.lastname}}</h4>
+            <div *ngIf="_teacher">
+                <h4 *ngIf="_isDrivingLesson && this.calendarService.isAdminView()">{{_teacher.user.firstName}} {{_teacher.user.lastName}}</h4>
+            </div>
+            <h4 *ngIf="_isTheoryLesson">Thema: {{_subject}}</h4>
+        </div>
+        <div class="exit-button">
+            <a (click)="close()">
+                <fa-icon icon="times"></fa-icon>
+            </a>
+        </div>
+    </div>
+
+    <div class="body">
+        <div class="form-inline">
+            <div class="form-group mb-2">
+                <div class="btn btn-primary" *ngIf="_isFresh" (click)="openTheoryLessonModal()">
+                    Theoriestunde erstellen
+                </div>
+                <div class="btn btn-primary" *ngIf="_isFresh" (click)="openDrivingLessonModal()">
+                    Fahrstunde erstellen
+                </div>
+                <div class="btn btn-primary"
+                     *ngIf="_isTheoryLesson && (this.calendarService.isTeacherView() || this.calendarService.isAdminView())"
+                     (click)="openTheoryLessonModal()">Bearbeiten
+                </div>
+                <div class="btn-group mr-3"
+                     *ngIf="_sidebarEvent.start > _currentDate && (_isDrivingLesson || _isUnassignedDrivingLesson)">
+                    <button type="button" class="btn btn-danger" (click)="cancelDrivingLesson(false)"
+                            *ngIf="_isUnassignedDrivingLesson && (this.calendarService.isAdminView() || this.calendarService.isAdminView())">Absagen
+                    </button>
+                    <button type="button" class="btn btn-danger" (click)="cancelDrivingLesson(true)"
+                            *ngIf="_isDrivingLesson">Absagen
+                    </button>
+                    <div class="btn-group" ngbDropdown role="group"
+                         *ngIf="_isDrivingLesson && (this.calendarService.isAdminView() || this.calendarService.isTeacherView())">
+                        <button class="btn btn-danger dropdown-toggle-split" ngbDropdownToggle></button>
+                        <div class="dropdown-menu" ngbDropdownMenu>
+                            <button ngbDropdownItem (click)="cancelDrivingLesson(false)">Absagen ohne Buchung</button>
+                        </div>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-primary" (click)="openDrivingLessonModal()"
+                        *ngIf="(_isDrivingLesson || _isUnassignedDrivingLesson) && (this.calendarService.isTeacherView() || this.calendarService.isAdminView())">
+                    Bearbeiten
+                </button>
+
+                <button class="btn btn-primary" (click)="openBookLessonModal()" *ngIf="_isUnassignedDrivingLesson && this.calendarService.isStudentView()">
+                    Buchen
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

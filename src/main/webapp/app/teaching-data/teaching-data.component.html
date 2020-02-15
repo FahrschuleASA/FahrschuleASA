@@ -1,0 +1,140 @@
+<div>
+    <div class="row justify-content-center">
+        <div class="col-md-8" *ngIf="teachingDiagram">
+            <h2 jhiTranslate="global.menu.account.teachingData">Teaching Data</h2>
+
+            <dt><span jhiTranslate="fahrschuleAsaApp.teachingData.drivingCategory">Driving category</span></dt>
+            <dd>
+                    <span class="progress-value">
+                        {{teachingDiagram.drivingCategory}}
+                    </span>
+            </dd>
+            <dt><span jhiTranslate="fahrschuleAsaApp.teachingData.drivingLessonsCount">Driving Lessons</span></dt>
+            <dd>
+                    <span class="progress-value">
+                        {{teachingDiagram.drivingLessonsCount}} Stunde(n)
+                    </span>
+            </dd>
+            <dt *ngIf="teachingDiagram.missedDrivingLessonsCount"><span jhiTranslate="fahrschuleAsaApp.teachingData.missedDrivingLessonsCount">Missed Driving Lessons</span></dt>
+            <dd *ngIf="teachingDiagram.missedDrivingLessonsCount">
+                    <span class="progress-value">
+                        {{teachingDiagram.missedDrivingLessonsCount}} Stunde(n)
+                    </span>
+            </dd>
+            <dt *ngIf="teachingDiagram.lateMissedDrivingLessonsCount"><span jhiTranslate="fahrschuleAsaApp.teachingData.lateMissedDrivingLessonsCount">Late Missed Driving Lessons</span></dt>
+            <dd *ngIf="teachingDiagram.lateMissedDrivingLessonsCount">
+                    <span class="progress-value">
+                        {{teachingDiagram.lateMissedDrivingLessonsCount}} Stunde(n)
+                    </span>
+            </dd>
+            <dt><span jhiTranslate="fahrschuleAsaApp.teachingData.allowedLessons">Allowed Lessons</span></dt>
+            <dd>
+                    <span class="progress-value">
+                        {{teachingDiagram.allowedLessons}}
+                    </span>
+            </dd>
+            <dt><span jhiTranslate="fahrschuleAsaApp.teachingData.theoryLessonsCount">Theory Lessons</span></dt>
+            <dd>
+                    <span class="progress-value">
+                        {{teachingDiagram.theoryLessonsCount}} Stunde(n)
+                    </span>
+            </dd>
+            <hr>
+            <h3 jhiTranslate="fahrschuleAsaApp.teachingData.teacherContact">Contact data teacher</h3>
+            <div>
+                <dt><span jhiTranslate="fahrschuleAsaApp.teachingData.teacher.name">Name</span></dt>
+                <dd>
+                    <span class="progress-value">
+                        {{teacher.user.firstName}} {{teacher.user.lastName}}
+                    </span>
+                </dd>
+                <dt><span jhiTranslate="fahrschuleAsaApp.teachingData.teacher.mail">Mail</span></dt>
+                <dd>
+                    <span class="progress-value">
+                        {{teacher.user.email}}
+                    </span>
+                </dd>
+                <dt><span jhiTranslate="fahrschuleAsaApp.teachingData.teacher.phoneNumber">Phone number</span></dt>
+                <dd>
+                    <span class="progress-value">
+                        {{teacher.phoneNumber}}
+                    </span>
+                </dd>
+            </div>
+            <hr>
+            <h3 jhiTranslate="fahrschuleAsaApp.teachingData.teachingDiagram">Teaching Diagram</h3>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="fahrschuleAsaApp.teachingData.performance">Performance</span></dt>
+                <dd class="mb">
+                    <ngb-progressbar [type]="get_type(teachingDiagram.performance)" [value]="teachingDiagram.performance" height="20px">
+                        <span class="progress-percentage">{{teachingDiagram.performance}} %</span>
+                    </ngb-progressbar>
+                </dd>
+                <dt><span jhiTranslate="fahrschuleAsaApp.teachingData.independence">Independence</span></dt>
+                <dd class="mb">
+                    <ngb-progressbar [type]="get_type(teachingDiagram.independence)" [value]="teachingDiagram.independence" height="20px">
+                        <span class="progress-percentage">{{teachingDiagram.independence}} %</span>
+                    </ngb-progressbar>
+                </dd>
+                <dt><span jhiTranslate="fahrschuleAsaApp.teachingData.advanced">Advanced </span></dt>
+                <dd>
+                    <ngb-progressbar [type]="get_type(teachingDiagram.advanced)" [value]="teachingDiagram.advanced" height="20px">
+                        <span class="progress-percentage">{{teachingDiagram.advanced}} %</span>
+                    </ngb-progressbar>
+                </dd>
+                <hr>
+                <dt><span jhiTranslate="fahrschuleAsaApp.teachingData.basic">Basic</span></dt>
+                <dd>
+                    <ngb-progressbar [type]="get_type(teachingDiagram.basic)" [value]="teachingDiagram.basic" height="20px">
+                        <span class="progress-percentage">{{teachingDiagram.basic}} %</span>
+                    </ngb-progressbar>
+                </dd>
+                <dt><span jhiTranslate="fahrschuleAsaApp.teachingData.overland">Overland</span></dt>
+                <dd>
+                    <ngb-progressbar [type]="get_type(teachingDiagram.overland)" [value]="teachingDiagram.overland" height="20px">
+                        <span class="progress-percentage">{{teachingDiagram.overland}} %</span>
+                    </ngb-progressbar>
+                </dd>
+                <dt><span jhiTranslate="fahrschuleAsaApp.teachingData.autobahn">Autobahn</span></dt>
+                <dd>
+                    <ngb-progressbar [type]="get_type(teachingDiagram.autobahn)" [value]="teachingDiagram.autobahn" height="20px">
+                        <span class="progress-percentage">{{teachingDiagram.autobahn}} %</span>
+                    </ngb-progressbar>
+                </dd>
+                <dt><span jhiTranslate="fahrschuleAsaApp.teachingData.night">Night</span></dt>
+                <dd>
+                    <ngb-progressbar [type]="get_type(teachingDiagram.night)" [value]="teachingDiagram.night" height="20px">
+                        <span class="progress-percentage">{{teachingDiagram.night}} %</span>
+                    </ngb-progressbar>
+                </dd>
+                <hr>
+                <!--<dd jhiTranslate="fahrschuleAsaApp.teachingDiagram.hours" [translateValues]="{value: teachingDiagram.overland}">{{teachingDiagram.overland}} hours</dd>-->
+                <dt><span jhiTranslate="fahrschuleAsaApp.teachingData.basicHours">Basic driving lessons</span></dt>
+                <dd>
+                    <span class="progress-value">
+                        {{teachingDiagram.basicCount}} Stunde(n)
+                    </span>
+                </dd>
+                <dt><span jhiTranslate="fahrschuleAsaApp.teachingData.overlandHours">Overland driving lessons</span></dt>
+                <dd>
+                    <span class="progress-value">
+                        {{teachingDiagram.overlandCount}} Stunde(n)
+                    </span>
+                </dd>
+                <dt><span jhiTranslate="fahrschuleAsaApp.teachingData.autobahnHours">Autobahn driving lessons</span></dt>
+                <dd>
+                    <span class="progress-value">
+                        {{teachingDiagram.autobahnCount}} Stunde(n)
+                    </span>
+                </dd>
+                <dt><span jhiTranslate="fahrschuleAsaApp.teachingData.nightHours">Night driving lessons</span></dt>
+                <dd>
+                    <span class="progress-value">
+                        {{teachingDiagram.nightCount}} Stunde(n)
+                    </span>
+                </dd>
+            </dl>
+        </div>
+    </div>
+
+</div>

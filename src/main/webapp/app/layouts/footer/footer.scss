@@ -1,0 +1,14 @@
+.footer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top: 1px solid rgba(0, 0, 0, 0.125);
+    height: 50px;
+    ul {
+        flex: 0 1;
+        align-self: center;
+        list-style-type: none;
+        padding: 0;
+    }
+}

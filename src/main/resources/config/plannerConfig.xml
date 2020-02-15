@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<solver>
+    <!-- Domain model configuration -->
+    <solutionClass>org.projekt17.fahrschuleasa.planner.Schedule</solutionClass>
+    <entityClass>org.projekt17.fahrschuleasa.planner.PlanningDrivingLesson</entityClass>
+
+    <!-- Reference the score -->
+    <scoreDirectorFactory>
+        <easyScoreCalculatorClass>org.projekt17.fahrschuleasa.planner.ScoreCalculator</easyScoreCalculatorClass>
+    </scoreDirectorFactory>
+
+    <!-- Termination algorithms configuration -->
+    <termination>
+        <minutesSpentLimit>10</minutesSpentLimit>
+    </termination>
+
+</solver>

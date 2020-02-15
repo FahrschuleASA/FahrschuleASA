@@ -1,0 +1,4 @@
+id;login;password_hash;first_name;last_name;email;activated;lang_key;created_by;last_modified_by
+5;teacher;$2a$10$aWp0wvhPdT9SYiGNdQCDLOKL61PtkGsBfd2H9v17tkJpbY6tj5SIG;My;Teacher;teacher@localhost;true;de;system;system
+6;student1;$2a$10$q///4hrrp9eSPT6GOS7DTOjPUnCAc2v9TYOAl1CMtlAH5X4uWgBDe;Student;1;student1@localhost;true;de;system;system
+7;student2;$2a$10$4fY1rnr74SRef1MdoJIEJuCvwIt7jbwg.ERT7HQE0KxMCHW6NPOHu;Student;2;student2@localhost;true;de;system;system

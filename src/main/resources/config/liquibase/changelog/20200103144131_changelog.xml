@@ -1,0 +1,349 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+    <changeSet author="user (generated)" id="1578058895753-1">
+        <createTable tableName="administrator">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="administratorPK"/>
+            </column>
+            <column name="active" type="BOOLEAN"/>
+            <column name="birthdate" type="date"/>
+            <column name="phone_number" type="VARCHAR(255)"/>
+            <column name="address_id" type="BIGINT"/>
+            <column name="user_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="user (generated)" id="1578058895753-2">
+        <createTable tableName="driving_lesson">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="driving_lessonPK"/>
+            </column>
+            <column name="begin" type="TIMESTAMP"/>
+            <column name="end" type="TIMESTAMP"/>
+            <column name="lesson_type" type="VARCHAR(255)"/>
+            <column name="manual_lesson" type="BOOLEAN"/>
+            <column name="destination_id" type="BIGINT"/>
+            <column name="driver_id" type="BIGINT"/>
+            <column name="missing_id" type="BIGINT"/>
+            <column name="pickup_id" type="BIGINT"/>
+            <column name="teacher_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="user (generated)" id="1578058895753-3">
+        <createTable tableName="driving_lesson_optional_students">
+            <column name="driving_lesson_id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="optional_students_id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="user (generated)" id="1578058895753-4">
+        <createTable tableName="jhi_authority">
+            <column name="name" type="VARCHAR(50)">
+                <constraints primaryKey="true" primaryKeyName="jhi_authorityPK"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="user (generated)" id="1578058895753-5">
+        <createTable tableName="jhi_persistent_audit_event">
+            <column autoIncrement="true" name="event_id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="jhi_persistent_audit_eventPK"/>
+            </column>
+            <column name="event_date" type="TIMESTAMP"/>
+            <column name="event_type" type="VARCHAR(255)"/>
+            <column name="principal" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="user (generated)" id="1578058895753-6">
+        <createTable tableName="jhi_persistent_audit_evt_data">
+            <column name="event_id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="value" type="VARCHAR(255)"/>
+            <column name="name" type="VARCHAR(255)">
+                <constraints primaryKey="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="user (generated)" id="1578058895753-7">
+        <createTable tableName="jhi_user">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="jhi_userPK"/>
+            </column>
+            <column name="created_by" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="TIMESTAMP"/>
+            <column name="last_modified_by" type="VARCHAR(50)"/>
+            <column name="last_modified_date" type="TIMESTAMP"/>
+            <column name="activated" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="activation_key" type="VARCHAR(20)"/>
+            <column name="email" type="VARCHAR(254)"/>
+            <column name="first_name" type="VARCHAR(50)"/>
+            <column name="image_url" type="VARCHAR(256)"/>
+            <column name="lang_key" type="VARCHAR(10)"/>
+            <column name="last_name" type="VARCHAR(50)"/>
+            <column name="login" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="password_hash" type="VARCHAR(60)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="reset_date" type="TIMESTAMP"/>
+            <column name="reset_key" type="VARCHAR(20)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="user (generated)" id="1578058895753-8">
+        <createTable tableName="jhi_user_authority">
+            <column name="user_id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="authority_name" type="VARCHAR(50)">
+                <constraints primaryKey="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="user (generated)" id="1578058895753-9">
+        <createTable tableName="location">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="locationPK"/>
+            </column>
+            <column name="additional" type="VARCHAR(255)"/>
+            <column name="country" type="VARCHAR(255)"/>
+            <column name="house_number" type="INT"/>
+            <column name="latitude" type="DOUBLE precision"/>
+            <column name="longitude" type="DOUBLE precision"/>
+            <column name="postal" type="VARCHAR(255)"/>
+            <column name="street" type="VARCHAR(255)"/>
+            <column name="town" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="user (generated)" id="1578058895753-10">
+        <createTable tableName="preference">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="preferencePK"/>
+            </column>
+            <column name="destination_id" type="BIGINT"/>
+            <column name="pickup_id" type="BIGINT"/>
+            <column name="student_id" type="BIGINT"/>
+            <column name="time_slot_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="user (generated)" id="1578058895753-11">
+        <createTable tableName="student">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="studentPK"/>
+            </column>
+            <column name="active" type="BOOLEAN"/>
+            <column name="birthdate" type="date"/>
+            <column name="phone_number" type="VARCHAR(255)"/>
+            <column name="category" type="VARCHAR(255)"/>
+            <column name="changed_preferences" type="BOOLEAN"/>
+            <column name="ready_for_theory" type="BOOLEAN"/>
+            <column name="wanted_lessons" type="INT"/>
+            <column name="address_id" type="BIGINT"/>
+            <column name="user_id" type="BIGINT"/>
+            <column name="teacher_id" type="BIGINT"/>
+            <column name="teaching_diagram_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="user (generated)" id="1578058895753-12">
+        <createTable tableName="student_theory_lessons">
+            <column name="student_id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="theory_lessons_id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="user (generated)" id="1578058895753-13">
+        <createTable tableName="teacher">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="teacherPK"/>
+            </column>
+            <column name="active" type="BOOLEAN"/>
+            <column name="birthdate" type="date"/>
+            <column name="phone_number" type="VARCHAR(255)"/>
+            <column name="changed_time_slots" type="BOOLEAN"/>
+            <column name="school_owner" type="BOOLEAN"/>
+            <column name="address_id" type="BIGINT"/>
+            <column name="user_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="user (generated)" id="1578058895753-14">
+        <createTable tableName="teaching_diagram">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="teaching_diagramPK"/>
+            </column>
+            <column name="advanced" type="INT"/>
+            <column name="autobahn" type="INT"/>
+            <column name="basic" type="INT"/>
+            <column name="independence" type="INT"/>
+            <column name="night" type="INT"/>
+            <column name="overland" type="INT"/>
+            <column name="performance" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="user (generated)" id="1578058895753-15">
+        <createTable tableName="theory_lesson">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="theory_lessonPK"/>
+            </column>
+            <column name="begin" type="TIMESTAMP"/>
+            <column name="end" type="TIMESTAMP"/>
+            <column name="subject" type="VARCHAR(255)"/>
+            <column name="teacher_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="user (generated)" id="1578058895753-16">
+        <createTable tableName="time_slot">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="time_slotPK"/>
+            </column>
+            <column name="begin" type="INT"/>
+            <column name="day" type="VARCHAR(255)"/>
+            <column name="end" type="INT"/>
+            <column name="night" type="BOOLEAN"/>
+            <column name="last_scheduled_student_id" type="BIGINT"/>
+            <column name="teacher_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="user (generated)" id="1578058895753-17">
+        <createTable tableName="time_slot_blocked_dates">
+            <column name="time_slot_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="blocked_dates" type="date"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="user (generated)" id="1578058895753-18">
+        <createTable tableName="time_slot_optional_categories">
+            <column name="time_slot_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="optional_categories" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="user (generated)" id="1578058895753-19">
+        <createTable tableName="time_slot_preferred_categories">
+            <column name="time_slot_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="preferred_categories" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="user (generated)" id="1578058895753-20">
+        <addUniqueConstraint columnNames="user_id" constraintName="UC_ADMINISTRATORUSER_ID_COL" tableName="administrator"/>
+    </changeSet>
+    <changeSet author="user (generated)" id="1578058895753-21">
+        <addUniqueConstraint columnNames="email" constraintName="UC_JHI_USEREMAIL_COL" tableName="jhi_user"/>
+    </changeSet>
+    <changeSet author="user (generated)" id="1578058895753-22">
+        <addUniqueConstraint columnNames="login" constraintName="UC_JHI_USERLOGIN_COL" tableName="jhi_user"/>
+    </changeSet>
+    <changeSet author="user (generated)" id="1578058895753-23">
+        <addUniqueConstraint columnNames="teaching_diagram_id" constraintName="UC_STUDENTTEACHING_DIAGRAM_ID_COL" tableName="student"/>
+    </changeSet>
+    <changeSet author="user (generated)" id="1578058895753-24">
+        <addUniqueConstraint columnNames="user_id" constraintName="UC_STUDENTUSER_ID_COL" tableName="student"/>
+    </changeSet>
+    <changeSet author="user (generated)" id="1578058895753-25">
+        <addUniqueConstraint columnNames="user_id" constraintName="UC_TEACHERUSER_ID_COL" tableName="teacher"/>
+    </changeSet>
+    <changeSet author="user (generated)" id="1578058895753-26">
+        <addForeignKeyConstraint baseColumnNames="driving_lesson_id" baseTableName="driving_lesson_optional_students" constraintName="FK18757p0opo5c2lco22yh4x58r" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="driving_lesson" validate="true"/>
+    </changeSet>
+    <changeSet author="user (generated)" id="1578058895753-27">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="jhi_user_authority" constraintName="FK290okww5jujghp4el5i7mgwu0" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="jhi_user" validate="true"/>
+    </changeSet>
+    <changeSet author="user (generated)" id="1578058895753-28">
+        <addForeignKeyConstraint baseColumnNames="event_id" baseTableName="jhi_persistent_audit_evt_data" constraintName="FK2ehnyx2si4tjd2nt4q7y40v8m" deferrable="false" initiallyDeferred="false" referencedColumnNames="event_id" referencedTableName="jhi_persistent_audit_event" validate="true"/>
+    </changeSet>
+    <changeSet author="user (generated)" id="1578058895753-29">
+        <addForeignKeyConstraint baseColumnNames="teacher_id" baseTableName="student" constraintName="FK3mphcmldvs29jl1w40ssg300j" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="teacher" validate="true"/>
+    </changeSet>
+    <changeSet author="user (generated)" id="1578058895753-30">
+        <addForeignKeyConstraint baseColumnNames="destination_id" baseTableName="preference" constraintName="FK4das4yf358kytk8ragdu6gvbl" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="location" validate="true"/>
+    </changeSet>
+    <changeSet author="user (generated)" id="1578058895753-31">
+        <addForeignKeyConstraint baseColumnNames="authority_name" baseTableName="jhi_user_authority" constraintName="FK4psxl0jtx6nr7rhqbynr6itoc" deferrable="false" initiallyDeferred="false" referencedColumnNames="name" referencedTableName="jhi_authority" validate="true"/>
+    </changeSet>
+    <changeSet author="user (generated)" id="1578058895753-32">
+        <addForeignKeyConstraint baseColumnNames="time_slot_id" baseTableName="time_slot_blocked_dates" constraintName="FK5d4jsysaw1iupb1hxloncgkit" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="time_slot" validate="true"/>
+    </changeSet>
+    <changeSet author="user (generated)" id="1578058895753-33">
+        <addForeignKeyConstraint baseColumnNames="destination_id" baseTableName="driving_lesson" constraintName="FK5xabsall7w2vhmm63s9leblqr" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="location" validate="true"/>
+    </changeSet>
+    <changeSet author="user (generated)" id="1578058895753-34">
+        <addForeignKeyConstraint baseColumnNames="pickup_id" baseTableName="preference" constraintName="FK7cxsp0rqs1k4exg6sga7pr4sn" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="location" validate="true"/>
+    </changeSet>
+    <changeSet author="user (generated)" id="1578058895753-35">
+        <addForeignKeyConstraint baseColumnNames="pickup_id" baseTableName="driving_lesson" constraintName="FK8m5rs08b7eohn5b1y6sdbvsin" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="location" validate="true"/>
+    </changeSet>
+    <changeSet author="user (generated)" id="1578058895753-36">
+        <addForeignKeyConstraint baseColumnNames="time_slot_id" baseTableName="time_slot_preferred_categories" constraintName="FKaqba5smwcapu81q0cl7vwdxps" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="time_slot" validate="true"/>
+    </changeSet>
+    <changeSet author="user (generated)" id="1578058895753-37">
+        <addForeignKeyConstraint baseColumnNames="teacher_id" baseTableName="time_slot" constraintName="FKbut19t2icb9qsijbouqkmd7yi" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="teacher" validate="true"/>
+    </changeSet>
+    <changeSet author="user (generated)" id="1578058895753-38">
+        <addForeignKeyConstraint baseColumnNames="teacher_id" baseTableName="theory_lesson" constraintName="FKd050qd3y3ofglbtu0sdydkf8c" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="teacher" validate="true"/>
+    </changeSet>
+    <changeSet author="user (generated)" id="1578058895753-39">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="administrator" constraintName="FKdsdrhcheo2dy8ssy2qfy65xgh" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="jhi_user" validate="true"/>
+    </changeSet>
+    <changeSet author="user (generated)" id="1578058895753-40">
+        <addForeignKeyConstraint baseColumnNames="time_slot_id" baseTableName="time_slot_optional_categories" constraintName="FKesq9j9gu5n6bbmd28yx933lkg" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="time_slot" validate="true"/>
+    </changeSet>
+    <changeSet author="user (generated)" id="1578058895753-41">
+        <addForeignKeyConstraint baseColumnNames="optional_students_id" baseTableName="driving_lesson_optional_students" constraintName="FKf8j8r1t2n98agrtbdo2sps0t8" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="student" validate="true"/>
+    </changeSet>
+    <changeSet author="user (generated)" id="1578058895753-42">
+        <addForeignKeyConstraint baseColumnNames="teacher_id" baseTableName="driving_lesson" constraintName="FKg8rc7dgw25t4osr2vc11rqye" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="teacher" validate="true"/>
+    </changeSet>
+    <changeSet author="user (generated)" id="1578058895753-43">
+        <addForeignKeyConstraint baseColumnNames="student_id" baseTableName="preference" constraintName="FKhlmv0k2h2j3wqdja9580yenf1" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="student" validate="true"/>
+    </changeSet>
+    <changeSet author="user (generated)" id="1578058895753-44">
+        <addForeignKeyConstraint baseColumnNames="missing_id" baseTableName="driving_lesson" constraintName="FKhp51sf6uiqqo1600k1sylp55q" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="student" validate="true"/>
+    </changeSet>
+    <changeSet author="user (generated)" id="1578058895753-45">
+        <addForeignKeyConstraint baseColumnNames="address_id" baseTableName="administrator" constraintName="FKk7oht5kcqtqrmx03ey4m8v3yr" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="location" validate="true"/>
+    </changeSet>
+    <changeSet author="user (generated)" id="1578058895753-46">
+        <addForeignKeyConstraint baseColumnNames="last_scheduled_student_id" baseTableName="time_slot" constraintName="FKknsv5k3tsv3ld5okcnpy2bi03" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="student" validate="true"/>
+    </changeSet>
+    <changeSet author="user (generated)" id="1578058895753-47">
+        <addForeignKeyConstraint baseColumnNames="driver_id" baseTableName="driving_lesson" constraintName="FKl4wwdllwd6q4g2ebdy93om9ci" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="student" validate="true"/>
+    </changeSet>
+    <changeSet author="user (generated)" id="1578058895753-48">
+        <addForeignKeyConstraint baseColumnNames="time_slot_id" baseTableName="preference" constraintName="FKn8seqs68qwgycdd998rfx6ve6" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="time_slot" validate="true"/>
+    </changeSet>
+    <changeSet author="user (generated)" id="1578058895753-49">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="student" constraintName="FKnt8ib3nk49fju65ya4q0pdybk" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="jhi_user" validate="true"/>
+    </changeSet>
+    <changeSet author="user (generated)" id="1578058895753-50">
+        <addForeignKeyConstraint baseColumnNames="theory_lessons_id" baseTableName="student_theory_lessons" constraintName="FKohrxan66i8ni7tv6x311uhwih" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="theory_lesson" validate="true"/>
+    </changeSet>
+    <changeSet author="user (generated)" id="1578058895753-51">
+        <addForeignKeyConstraint baseColumnNames="address_id" baseTableName="teacher" constraintName="FKpq58x9suc2fbln2gvu4sjuat7" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="location" validate="true"/>
+    </changeSet>
+    <changeSet author="user (generated)" id="1578058895753-52">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="teacher" constraintName="FKpxodeyovfygrks9pa27x9drsx" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="jhi_user" validate="true"/>
+    </changeSet>
+    <changeSet author="user (generated)" id="1578058895753-53">
+        <addForeignKeyConstraint baseColumnNames="address_id" baseTableName="student" constraintName="FKqk0o9dusoi6yxfslga5vk64k4" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="location" validate="true"/>
+    </changeSet>
+    <changeSet author="user (generated)" id="1578058895753-54">
+        <addForeignKeyConstraint baseColumnNames="student_id" baseTableName="student_theory_lessons" constraintName="FKqxhgsb7fo72jr6br8vuyhi8jg" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="student" validate="true"/>
+    </changeSet>
+    <changeSet author="user (generated)" id="1578058895753-55">
+        <addForeignKeyConstraint baseColumnNames="teaching_diagram_id" baseTableName="student" constraintName="FKrjpw3msh73vgwfv4fq8ipupri" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="teaching_diagram" validate="true"/>
+    </changeSet>
+</databaseChangeLog>

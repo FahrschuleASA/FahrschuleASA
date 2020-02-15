@@ -1,0 +1,73 @@
+<div class="modal-header">
+    <h4 class="modal-title">Ort definieren</h4>
+    <button aria-label="Close" data-dismiss="modal" class="close" type="button" (click)="cancel()">
+        <span aria-hidden="true">x</span>
+    </button>
+</div>
+
+<div class="modal-body" *ngIf="student">
+
+    <h3 class="modal-title">Abholort definieren:</h3>
+
+    <div class="col-md-8">
+        <form class="form" role="form" [formGroup]="pickupEventForm">
+            <div class="form-group">
+                <label class="title-label" for="pickupstreet">Straße</label>
+                <input type="text" class="form-control" name="street" id="pickupstreet" value="{{getStudent().address.street.toString()}}" formControlName="pickupstreet">
+
+                <label class="title-label" for="pickuphousenumber">Hausnummer</label>
+                <input type="text" class="form-control" name="housenumber" id="pickuphousenumber" value="{{getStudent().address.houseNumber.toString()}}" formControlName="pickuphousenumber">
+
+                <label class="title-label" for="pickupzipcode">Postleitzahl</label>
+                <input type="text" class="form-control" name="zipcode" id="pickupzipcode" value="{{getStudent().address.postal.toString()}}" formControlName="pickupzipcode">
+
+                <label class="title-label" for="pickupcity">Wohnort</label>
+                <input type="text" class="form-control" name="city" id="pickupcity" value="{{getStudent().address.town.toString()}}" formControlName="pickupcity">
+
+                <label class="title-label" for="pickupcountry">Land</label>
+                <input type="text" class="form-control" name="country" id="pickupcountry" value="{{getStudent().address.country.toString()}}" formControlName="pickupcountry">
+
+                <label class="title-label" for="pickupadditional">Zusatz</label>
+                <input type="text" class="form-control" name="additional" id="pickupadditional" value="{{getStudent().address.additional.toString()}}" formControlName="pickupadditional">
+            </div>
+        </form>
+        <p></p>
+    </div>
+
+    <h3 class="modal-title">Absetzort definieren:</h3>
+
+    <div class="col-md-8">
+        <form class="form" role="form" [formGroup]="destEventForm">
+            <div class="form-group">
+                <label class="title-label" for="deststreet">Straße</label>
+                <input type="text" class="form-control" name="street" id="deststreet" value="{{getStudent().address.street.toString()}}" formControlName="deststreet">
+
+                <label class="title-label" for="desthousenumber">Hausnummer</label>
+                <input type="text" class="form-control" name="housenumber" id="desthousenumber" value="{{getStudent().address.houseNumber.toString()}}" formControlName="desthousenumber">
+
+                <label class="title-label" for="destzipcode">Postleitzahl</label>
+                <input type="text" class="form-control" name="zipcode" id="destzipcode" value="{{getStudent().address.postal.toString()}}" formControlName="destzipcode">
+
+                <label class="title-label" for="destcity">Wohnort</label>
+                <input type="text" class="form-control" name="city" id="destcity" value="{{getStudent().address.town.toString()}}" formControlName="destcity">
+
+                <label class="title-label" for="destcountry">Land</label>
+                <input type="text" class="form-control" name="country" id="destcountry" value="{{getStudent().address.country.toString()}}" formControlName="destcountry">
+
+                <label class="title-label" for="destadditional">Zusatz</label>
+                <input type="text" class="form-control" name="additional" id="destadditional" value="{{getStudent().address.additional.toString()}}" formControlName="destadditional">
+            </div>
+        </form>
+        <p></p>
+    </div>
+</div>
+
+<div class="modal-footer">
+    <div class="row">
+        <div class="col-md-4">
+            <button type="button" class="btn btn-primary" (click)="emitLocation()">
+                Auswählen
+            </button>
+        </div>
+    </div>
+</div>
